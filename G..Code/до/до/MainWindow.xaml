@@ -1,0 +1,199 @@
+﻿<Window x:Class="MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Аккаунты DarkOrbit" Height="736.061" Width="1084.545" Foreground="Black">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+            <GradientStop Color="Red" Offset="0"/>
+            <GradientStop Color="#FF000CFF" Offset="0.132"/>
+            <GradientStop Color="#FE5DFF00" Offset="0.265"/>
+            <GradientStop Color="#FEF3FF00" Offset="0.385"/>
+            <GradientStop Color="#FEFF0074" Offset="0.87"/>
+            <GradientStop Color="#FEC033F5" Offset="0.498"/>
+            <GradientStop Color="#FEFFFFFF" Offset="0.622"/>
+            <GradientStop Color="#FE00FFAE" Offset="0.735"/>
+            <GradientStop Color="#FFFF8B00" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid Margin="4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="211*"/>
+            <RowDefinition Height="487*"/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0,0" StartPoint="1,1">
+                <GradientStop Color="#FFFFE489" Offset="0"/>
+                <GradientStop Color="#FFC7EBFF" Offset="1"/>
+          </LinearGradientBrush>
+        </Grid.Background>
+        <ListBox x:Name="ListOfUsers" HorizontalAlignment="Left" Height="530" Margin="39,45,0,0" VerticalAlignment="Top" Width="515" BorderThickness="2" Background="#FFF9FBE0" Grid.RowSpan="2">
+            <ListBox.BorderBrush>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="1,0">
+                    <GradientStop Color="#FF00466E" Offset="0"/>
+                    <GradientStop Color="#FF702400" Offset="1"/>
+                </LinearGradientBrush>
+            </ListBox.BorderBrush>
+        </ListBox>
+        <TextBox x:Name="UserInfo" HorizontalAlignment="Left" Height="331" Margin="567,45,0,0" VerticalAlignment="Top" Width="483" BorderThickness="2" Background="#FFF9FBE0" FontFamily="Georgia" TextDecorations="{x:Null}" Foreground="#FF040015" SelectionBrush="#FFFF8B00" Grid.RowSpan="2">
+            <TextBox.BorderBrush>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="1,0">
+                    <GradientStop Color="#FF00466E" Offset="0"/>
+                    <GradientStop Color="#FF702400" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.BorderBrush>
+        </TextBox>
+        <Label Content="Список аккаунтов:" HorizontalAlignment="Left" Height="34" Margin="39,6,0,0" VerticalAlignment="Top" Width="410" FontSize="18" FontWeight="Bold" FontStyle="Italic" Foreground="Black">
+            <Label.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="20" Color="#FFFFC500"/>
+            </Label.Effect>
+        </Label>
+        <Label Content="Информация о аккаунте:" HorizontalAlignment="Left" Height="34" Margin="567,6,0,0" VerticalAlignment="Top" Width="410" FontSize="18" FontWeight="Bold" FontStyle="Italic" Foreground="Black">
+            <Label.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="20" Color="#FFFFC500"/>
+            </Label.Effect>
+        </Label>
+        <Button Content="Редактировать описание" HorizontalAlignment="Left" Height="34" Margin="780,170,0,0" VerticalAlignment="Top" Width="270" FontSize="16" FontWeight="Bold" FontStyle="Italic" Foreground="Black" BorderThickness="2" BorderBrush="Black" Click="Button_Click_1" Grid.Row="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFFFEBD3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF9390B0" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="20" Color="#FFFFC500"/>
+            </Button.Effect>
+        </Button>
+        <Label x:Name="ln456" Content="Введите новое описание аккаунта:" HorizontalAlignment="Left" Height="34" Margin="567,210,0,0" VerticalAlignment="Top" Width="410" FontSize="16" FontWeight="Bold" FontStyle="Italic" Foreground="Black" Visibility="Visible" Grid.Row="1">
+            <Label.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="20" Color="#FFFFC500"/>
+            </Label.Effect>
+        </Label>
+        <TextBox x:Name="Edit_Account" HorizontalAlignment="Left" Height="115" Margin="567,249,0,0" VerticalAlignment="Top" Width="483" BorderThickness="2" Background="#FFF9FBE0" FontFamily="Georgia" TextDecorations="{x:Null}" Foreground="#FF040015" SelectionBrush="#FFFF8B00" Grid.Row="1">
+            <TextBox.BorderBrush>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="1,0">
+                    <GradientStop Color="#FF00466E" Offset="0"/>
+                    <GradientStop Color="#FF702400" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.BorderBrush>
+        </TextBox>
+        <Button x:Name="Save" Content="Сохранить описание" HorizontalAlignment="Left" Height="29" Margin="798,369,0,0" VerticalAlignment="Top" Width="252" FontSize="16" FontWeight="Bold" FontStyle="Italic" Foreground="Black" BorderThickness="2" BorderBrush="Black" Grid.Row="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFFFEBD3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF9390B0" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="20" Color="#FFFFC500"/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="Delete" Content="Удалить" HorizontalAlignment="Left" Height="29" Margin="34,406,0,0" VerticalAlignment="Top" Width="77" FontSize="14" FontWeight="Bold" FontStyle="Italic" Foreground="Black" BorderThickness="2" BorderBrush="Black" Grid.Row="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFFFEBD3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF9390B0" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="20" Color="#FFFFC500"/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="Delete_Copy" Content="Обновить" HorizontalAlignment="Left" Height="29" Margin="116,406,0,0" VerticalAlignment="Top" Width="77" FontSize="14" FontWeight="Bold" FontStyle="Italic" Foreground="Black" BorderThickness="2" BorderBrush="Black" Grid.Row="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFFFEBD3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF9390B0" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="20" Color="#FFFFC500"/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="adduser" Content="Добавить" HorizontalAlignment="Left" Height="29" Margin="313,406,0,0" VerticalAlignment="Top" Width="77" FontSize="14" FontWeight="Bold" FontStyle="Italic" Foreground="Black" BorderThickness="2" BorderBrush="Black" Grid.Row="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFFFEBD3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF9390B0" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="20" Color="#FFFFC500"/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="Delete_Copy2" Content="Обновить все" HorizontalAlignment="Left" Height="29" Margin="198,406,0,0" VerticalAlignment="Top" Width="110" FontSize="14" FontWeight="Bold" FontStyle="Italic" Foreground="Black" BorderThickness="2" BorderBrush="Black" Grid.Row="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFFFEBD3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF9390B0" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="20" Color="#FFFFC500"/>
+            </Button.Effect>
+        </Button>
+        <TextBox x:Name="NewUserProfile" HorizontalAlignment="Left" Height="29" Margin="508,420,0,0" VerticalAlignment="Top" Width="439" BorderThickness="2" Background="#FFF9FBE0" FontFamily="Georgia" TextDecorations="{x:Null}" Foreground="#FF040015" SelectionBrush="#FFFF8B00" Visibility="Hidden" Grid.Row="1">
+            <TextBox.BorderBrush>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="1,0">
+                    <GradientStop Color="#FF00466E" Offset="0"/>
+                    <GradientStop Color="#FF702400" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.BorderBrush>
+        </TextBox>
+        <Label x:Name="ln23" Content="Профиль:" HorizontalAlignment="Left" Height="34" Margin="408,415,0,0" VerticalAlignment="Top" Width="95" FontSize="16" FontWeight="Bold" FontStyle="Italic" Foreground="Black" Visibility="Hidden" Grid.Row="1">
+            <Label.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="20" Color="#FFFFC500"/>
+            </Label.Effect>
+        </Label>
+        <Button x:Name="OK" Content="ОК" HorizontalAlignment="Left" Height="29" Margin="964,420,0,0" VerticalAlignment="Top" Width="77" FontSize="14" FontWeight="Bold" FontStyle="Italic" Foreground="Black" BorderThickness="2" BorderBrush="Black" Visibility="Hidden" Grid.Row="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFFFEBD3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF9390B0" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="20" Color="#FFFFC500"/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="Up" Content="⇑" HorizontalAlignment="Left" Height="41" Margin="10,45,0,0" VerticalAlignment="Top" Width="24" FontSize="24" FontWeight="Bold" Foreground="Black" BorderThickness="2" BorderBrush="Black" Visibility="Hidden">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFFFEBD3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF9390B0" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="20" Color="#FFFFC500"/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="Down" Content="⇓" HorizontalAlignment="Left" Height="41" Margin="10,91,0,0" VerticalAlignment="Top" Width="24" FontSize="24" FontWeight="Bold" Foreground="Black" BorderThickness="2" BorderBrush="Black" Visibility="Hidden">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFFFEBD3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF9390B0" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="20" Color="#FFFFC500"/>
+            </Button.Effect>
+        </Button>
+    </Grid>
+</Window>

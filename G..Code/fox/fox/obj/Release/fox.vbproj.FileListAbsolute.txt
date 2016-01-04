@@ -1,0 +1,15 @@
+C:\Users\USER\Documents\Visual Studio 2012\Projects\fox\fox\bin\Release\fox.exe.config
+C:\Users\USER\Documents\Visual Studio 2012\Projects\fox\fox\bin\Release\fox.exe
+C:\Users\USER\Documents\Visual Studio 2012\Projects\fox\fox\bin\Release\fox.pdb
+C:\Users\USER\Documents\Visual Studio 2012\Projects\fox\fox\bin\Release\fox.xml
+C:\Users\USER\Documents\Visual Studio 2012\Projects\fox\fox\obj\Release\fox.Form1.resources
+C:\Users\USER\Documents\Visual Studio 2012\Projects\fox\fox\obj\Release\fox.Resources.resources
+C:\Users\USER\Documents\Visual Studio 2012\Projects\fox\fox\obj\Release\fox.vbproj.GenerateResource.Cache
+C:\Users\USER\Documents\Visual Studio 2012\Projects\fox\fox\obj\Release\fox.exe
+C:\Users\USER\Documents\Visual Studio 2012\Projects\fox\fox\obj\Release\fox.xml
+C:\Users\USER\Documents\Visual Studio 2012\Projects\fox\fox\obj\Release\fox.pdb
+C:\Users\USER\Documents\Visual Studio 2012\Projects\fox\fox\obj\Release\fox.vbprojResolveAssemblyReference.cache
+E:\флешка\Projects\fox\fox\bin\Release\fox.exe.config
+E:\флешка\Projects\fox\fox\obj\Release\fox.exe
+E:\флешка\Projects\fox\fox\obj\Release\fox.xml
+E:\флешка\Projects\fox\fox\obj\Release\fox.pdb

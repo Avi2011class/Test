@@ -1,0 +1,32 @@
+C:\Users\USER\Documents\Visual Studio 2012\Projects\WindowsApplication4\WindowsApplication4\bin\Release\WindowsApplication4.exe.config
+C:\Users\USER\Documents\Visual Studio 2012\Projects\WindowsApplication4\WindowsApplication4\bin\Release\WindowsApplication4.exe
+C:\Users\USER\Documents\Visual Studio 2012\Projects\WindowsApplication4\WindowsApplication4\bin\Release\WindowsApplication4.pdb
+C:\Users\USER\Documents\Visual Studio 2012\Projects\WindowsApplication4\WindowsApplication4\bin\Release\WindowsApplication4.xml
+C:\Users\USER\Documents\Visual Studio 2012\Projects\WindowsApplication4\WindowsApplication4\obj\Release\WindowsApplication4.Form1.resources
+C:\Users\USER\Documents\Visual Studio 2012\Projects\WindowsApplication4\WindowsApplication4\obj\Release\WindowsApplication4.Resources.resources
+C:\Users\USER\Documents\Visual Studio 2012\Projects\WindowsApplication4\WindowsApplication4\obj\Release\WindowsApplication4.vbproj.GenerateResource.Cache
+C:\Users\USER\Documents\Visual Studio 2012\Projects\WindowsApplication4\WindowsApplication4\obj\Release\WindowsApplication4.exe
+C:\Users\USER\Documents\Visual Studio 2012\Projects\WindowsApplication4\WindowsApplication4\obj\Release\WindowsApplication4.xml
+C:\Users\USER\Documents\Visual Studio 2012\Projects\WindowsApplication4\WindowsApplication4\obj\Release\WindowsApplication4.pdb
+C:\Users\USER\Documents\Visual Studio 2012\Projects\4 в ряд\WindowsApplication4\bin\Release\WindowsApplication4.exe.config
+C:\Users\USER\Documents\Visual Studio 2012\Projects\4 в ряд\WindowsApplication4\obj\Release\WindowsApplication4.exe
+C:\Users\USER\Documents\Visual Studio 2012\Projects\4 в ряд\WindowsApplication4\obj\Release\WindowsApplication4.xml
+C:\Users\USER\Documents\Visual Studio 2012\Projects\4 в ряд\WindowsApplication4\obj\Release\WindowsApplication4.pdb
+C:\Users\USER\Documents\Visual Studio 2012\Projects\4 в ряд\WindowsApplication4\bin\Release\WindowsApplication4.exe
+C:\Users\USER\Documents\Visual Studio 2012\Projects\4 в ряд\WindowsApplication4\bin\Release\WindowsApplication4.pdb
+C:\Users\USER\Documents\Visual Studio 2012\Projects\4 в ряд\WindowsApplication4\bin\Release\WindowsApplication4.xml
+C:\Users\USER\Documents\Visual Studio 2012\Projects\4 в ряд\WindowsApplication4\obj\Release\WindowsApplication4.Form1.resources
+C:\Users\USER\Documents\Visual Studio 2012\Projects\4 в ряд\WindowsApplication4\obj\Release\WindowsApplication4.Resources.resources
+C:\Users\USER\Documents\Visual Studio 2012\Projects\4 в ряд\WindowsApplication4\obj\Release\WindowsApplication4.vbproj.GenerateResource.Cache
+C:\Users\USER\Documents\Visual Studio 2012\Projects\4 в ряд\WindowsApplication4\obj\Release\WindowsApplication4.vbprojResolveAssemblyReference.cache
+E:\флешка\Projects\4 в ряд\WindowsApplication4\bin\Release\WindowsApplication4.exe.config
+E:\флешка\Projects\4 в ряд\WindowsApplication4\obj\Release\WindowsApplication4.exe
+E:\флешка\Projects\4 в ряд\WindowsApplication4\obj\Release\WindowsApplication4.xml
+E:\флешка\Projects\4 в ряд\WindowsApplication4\obj\Release\WindowsApplication4.pdb
+E:\флешка\Projects\4 в ряд\WindowsApplication4\bin\Release\WindowsApplication4.exe
+E:\флешка\Projects\4 в ряд\WindowsApplication4\bin\Release\WindowsApplication4.pdb
+E:\флешка\Projects\4 в ряд\WindowsApplication4\bin\Release\WindowsApplication4.xml
+E:\флешка\Projects\4 в ряд\WindowsApplication4\obj\Release\WindowsApplication4.vbprojResolveAssemblyReference.cache
+E:\флешка\Projects\4 в ряд\WindowsApplication4\obj\Release\WindowsApplication4.Form1.resources
+E:\флешка\Projects\4 в ряд\WindowsApplication4\obj\Release\WindowsApplication4.Resources.resources
+E:\флешка\Projects\4 в ряд\WindowsApplication4\obj\Release\WindowsApplication4.vbproj.GenerateResource.Cache

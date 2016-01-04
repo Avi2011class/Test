@@ -1,0 +1,10 @@
+c:\users\user\documents\visual studio 2012\Projects\fox\fox\bin\Debug\fox.exe.config
+c:\users\user\documents\visual studio 2012\Projects\fox\fox\bin\Debug\fox.exe
+c:\users\user\documents\visual studio 2012\Projects\fox\fox\bin\Debug\fox.pdb
+c:\users\user\documents\visual studio 2012\Projects\fox\fox\bin\Debug\fox.xml
+c:\users\user\documents\visual studio 2012\Projects\fox\fox\obj\Debug\fox.Form1.resources
+c:\users\user\documents\visual studio 2012\Projects\fox\fox\obj\Debug\fox.Resources.resources
+c:\users\user\documents\visual studio 2012\Projects\fox\fox\obj\Debug\fox.vbproj.GenerateResource.Cache
+c:\users\user\documents\visual studio 2012\Projects\fox\fox\obj\Debug\fox.exe
+c:\users\user\documents\visual studio 2012\Projects\fox\fox\obj\Debug\fox.xml
+c:\users\user\documents\visual studio 2012\Projects\fox\fox\obj\Debug\fox.pdb

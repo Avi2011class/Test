@@ -1,0 +1,70 @@
+# depslib dependency file v1.0
+1420980128 source:k:\проги\3d++\main.cpp
+	<iostream>
+	<fstream>
+	<cstdio>
+	<cmath>
+	<conio.h>
+	<windows.h>
+	<locale.h>
+	<tchar.h>
+	<K:\\проги\\3D++\\3D.h>
+	<thread>
+	<chrono>
+
+1420999586 source:g:\проги\3d++\main.cpp
+	<iostream>
+	<fstream>
+	<cstdio>
+	<cmath>
+	<conio.h>
+	<windows.h>
+	<locale.h>
+	<tchar.h>
+	<G:\\проги\\3D++\\3D.h>
+	<thread>
+	<chrono>
+
+1104613543 source:f:\проги\3d++\main.cpp
+	<iostream>
+	<fstream>
+	<cstdio>
+	<cmath>
+	<conio.h>
+	<windows.h>
+	<locale.h>
+	<tchar.h>
+	<F:\\проги\\3D++\\3D.h>
+	<thread>
+	<chrono>
+
+1421732158 source:i:\проги\3d++\main.cpp
+	<iostream>
+	<fstream>
+	<cstdio>
+	<cmath>
+	<conio.h>
+	<windows.h>
+	<locale.h>
+	<tchar.h>
+	<I:\\проги\\3D++\\3D.h>
+	<thread>
+	<chrono>
+
+1435960077 source:e:\флешка\проги\3d++\main.cpp
+	<iostream>
+	<fstream>
+	<cstdio>
+	<cmath>
+	<conio.h>
+	<windows.h>
+	<locale.h>
+	<tchar.h>
+	<E:\\флешка\\проги\\3D++\\3D.h>
+	<thread>
+	<chrono>
+
+1435960788 source:e:\флешка\проги\3d++\test.cpp
+	<stdio.h>
+	<stdlib.h>
+

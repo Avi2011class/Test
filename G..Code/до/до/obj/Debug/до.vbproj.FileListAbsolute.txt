@@ -1,0 +1,15 @@
+c:\users\user\documents\visual studio 2012\Projects\до\до\bin\Debug\до.exe.config
+c:\users\user\documents\visual studio 2012\Projects\до\до\bin\Debug\до.exe
+c:\users\user\documents\visual studio 2012\Projects\до\до\bin\Debug\до.pdb
+c:\users\user\documents\visual studio 2012\Projects\до\до\bin\Debug\до.xml
+c:\users\user\documents\visual studio 2012\Projects\до\до\obj\Debug\MainWindow.baml
+c:\users\user\documents\visual studio 2012\Projects\до\до\obj\Debug\MainWindow.g.vb
+c:\users\user\documents\visual studio 2012\Projects\до\до\obj\Debug\Application.g.vb
+c:\users\user\documents\visual studio 2012\Projects\до\до\obj\Debug\до_MarkupCompile.cache
+c:\users\user\documents\visual studio 2012\Projects\до\до\obj\Debug\до.g.resources
+c:\users\user\documents\visual studio 2012\Projects\до\до\obj\Debug\до.Resources.resources
+c:\users\user\documents\visual studio 2012\Projects\до\до\obj\Debug\до.vbproj.GenerateResource.Cache
+c:\users\user\documents\visual studio 2012\Projects\до\до\obj\Debug\до.exe
+c:\users\user\documents\visual studio 2012\Projects\до\до\obj\Debug\до.xml
+c:\users\user\documents\visual studio 2012\Projects\до\до\obj\Debug\до.pdb
+C:\Users\USER\Documents\Visual Studio 2012\Projects\до\до\obj\Debug\Application.baml
