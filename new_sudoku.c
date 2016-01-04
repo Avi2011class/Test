@@ -206,7 +206,7 @@ void PrintfArray(int** Array)
     }
     printf("/////////////////////\n");
 }
-struct Cell CalcField(int** From) /* */
+struct Cell CalcField(int** Field) /* */
 {
     size_t i, j;
     size_t ki, kj, iter;
@@ -216,7 +216,7 @@ struct Cell CalcField(int** From) /* */
 
     for(i = 0; i < N; i++)
         for(j = 0; j < N; j++)
-            if(From[i][j] == 0)
+            if(Field[i][j] == 0)
             {
 
                 Tmp.i = i;
@@ -226,14 +226,14 @@ struct Cell CalcField(int** From) /* */
                 Tmp.Var = 9;
 
                 for(kj = 0; kj < N; kj++)
-                    Tmp.Can[From[i][kj]] = 0;
+                    Tmp.Can[Field[i][kj]] = 0;
 
                 for(ki = 0; ki < N; ki++)
-                    Tmp.Can[From[ki][j]] = 0;
+                    Tmp.Can[Field[ki][j]] = 0;
 
                 for(ki = i - (i % K); ki < i + K - (i % K); ki++)
                     for(kj = j - (j % K); kj < j + K - (j % K); kj++)
-                        Tmp.Can[From[ki][kj]] = 0;
+                        Tmp.Can[Field[ki][kj]] = 0;
 
                 for(iter = 1; iter < N + 1; iter++)
                     if(!Tmp.Can[iter])
@@ -243,6 +243,40 @@ struct Cell CalcField(int** From) /* */
                     Result = Tmp;
             }
     return Result;
+}
+int FieldIsCorrect(int** Field)
+{
+    size_t i, j;
+    size_t ki, kj, iter;
+
+    struct Cell Tmp;
+    for(i = 0; i < N; i++)
+        for(j = 0; j < N; j++)
+            if(Field[i][j] != 0)
+            {
+                Tmp.i = i;
+                Tmp.j = j;
+                for(iter = 0; iter < N + 1; iter++)
+                    Tmp.Can[iter] = 1;
+                Tmp.Var = 9;
+
+                for(kj = 0; kj < N; kj++)
+                    if(kj != j)
+                        Tmp.Can[Field[i][kj]] = 0;
+
+                for(ki = 0; ki < N; ki++)
+                    if(ki != i)
+                        Tmp.Can[Field[ki][j]] = 0;
+
+                for(ki = i - (i % K); ki < i + K - (i % K); ki++)
+                    for(kj = j - (j % K); kj < j + K - (j % K); kj++)
+                        if(ki != i || kj != j)
+                            Tmp.Can[Field[ki][kj]] = 0;
+
+                if(Tmp.Can[Field[i][j]] == 0)
+                    return 0;
+            }
+    return 1;
 }
 int ArrayIsFull(int** Array)
 {
@@ -286,28 +320,32 @@ int main(void)
         freopen("ERRLOG.txt", "w", stdout);*/
     system("COLOR 0E");
     setlocale(LC_ALL, "rus");
-    struct MemoryAllocator* Allocator = CreateMemoryAllocator(5);
-
+    struct MemoryAllocator* Allocator = CreateMemoryAllocator(10);
     int** Field = CreateArray(Allocator);
 
     if(!FScanfArray(Field, "input.txt"))
     {
-        printf("Ошибка при открытии файла или считывании\n");
+        printf("Can't open file or read data.\n");
         return 0;
     }
     PrintfArray(Field);
-
+    if(!FieldIsCorrect(Field))
+    {
+        printf("Data isn't correct!");
+        return 0;
+    }
     if(RecursionStep(Field, Allocator))
     {
-        printf("Судоку решен\n");
+        printf("Completed\n");
         PrintfArray(Field);
     }
     else
     {
-        printf("Решений нет\n");
+        printf("No solution\n");
     }
 
     DestroyArray(Allocator, Field);
     DestroyMemoryAllocator(Allocator);
+    system("pause");
     return 0;
 }
