@@ -20,7 +20,7 @@ struct MemoryAllocator
     int* CanBeUsed;
     int*** FreeMemory;
 };
-struct MemoryAllocator* CreateMemoryAllocator(int AllocatorStep)
+inline struct MemoryAllocator* CreateMemoryAllocator(int AllocatorStep)
 {
     size_t i, j, k;
     struct MemoryAllocator* NewAllocator = (struct MemoryAllocator*)malloc(sizeof(struct MemoryAllocator));
@@ -39,7 +39,7 @@ struct MemoryAllocator* CreateMemoryAllocator(int AllocatorStep)
     }
     return NewAllocator;
 };
-int** GetMemory(struct MemoryAllocator* Allocator)
+inline int** GetMemory(struct MemoryAllocator* Allocator)
 {
     if(DEBUG)
     {
@@ -88,7 +88,7 @@ int** GetMemory(struct MemoryAllocator* Allocator)
     if(DEBUG) printf("GetMemoryEnd3\n");
     return NULL;
 }
-int FreeMemory(struct MemoryAllocator* Allocator, int** Memory)
+inline int FreeMemory(struct MemoryAllocator* Allocator, int** Memory)
 {
     if(DEBUG)
     {
@@ -126,7 +126,7 @@ int FreeMemory(struct MemoryAllocator* Allocator, int** Memory)
         }
     return 0;
 }
-void DestroyMemoryAllocator(struct MemoryAllocator* Allocator)
+inline void DestroyMemoryAllocator(struct MemoryAllocator* Allocator)
 {
     size_t iter, j;
     free(Allocator->CanBeUsed);
@@ -138,7 +138,7 @@ void DestroyMemoryAllocator(struct MemoryAllocator* Allocator)
     }
     free(Allocator);
 }
-int** CreateArray(struct MemoryAllocator* Allocator)
+inline int** CreateArray(struct MemoryAllocator* Allocator)
 {
     if(USEALLOCATOR == 0)
     {
@@ -152,14 +152,14 @@ int** CreateArray(struct MemoryAllocator* Allocator)
         return GetMemory(Allocator);
     return NULL;
 }
-int** CopyArray(int** From, int** To)
+inline int** CopyArray(int** From, int** To)
 {
     size_t i, j;
     for(i = 0; i < N; i++)
         for(j = 0; j < N; j++)
             To[i][j] = From[i][j];
 }
-void DestroyArray(struct MemoryAllocator* Allocator, int** Array)
+inline void DestroyArray(struct MemoryAllocator* Allocator, int** Array)
 {
     if(USEALLOCATOR == 0)
     {
@@ -171,7 +171,7 @@ void DestroyArray(struct MemoryAllocator* Allocator, int** Array)
     else
         FreeMemory(Allocator, Array);
 }
-int FScanfArray(int** Array, const char* File)
+inline int FScanfArray(int** Array, const char* File)
 {
     FILE* Input = fopen(File, "r");
     if(Input == NULL)
@@ -186,7 +186,7 @@ int FScanfArray(int** Array, const char* File)
     close(Input);
     return 1;
 }
-void PrintfArray(int** Array)
+inline void PrintfArray(int** Array)
 {
     size_t i, j;
     for(i = 0; i < N; i++)
@@ -206,7 +206,7 @@ void PrintfArray(int** Array)
     }
     printf("/////////////////////\n");
 }
-struct Cell CalcField(int** Field) /* */
+inline struct Cell CalcField(int** Field) /* */
 {
     size_t i, j;
     size_t ki, kj, iter;
@@ -244,7 +244,7 @@ struct Cell CalcField(int** Field) /* */
             }
     return Result;
 }
-int FieldIsCorrect(int** Field)
+inline int FieldIsCorrect(int** Field)
 {
     size_t i, j;
     size_t ki, kj, iter;
@@ -278,7 +278,7 @@ int FieldIsCorrect(int** Field)
             }
     return 1;
 }
-int ArrayIsFull(int** Array)
+inline int ArrayIsFull(int** Array)
 {
     size_t i, j;
     for(i = 0; i < N; i++)
