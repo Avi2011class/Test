@@ -1,6 +1,25 @@
+/*
+Program to solve Sudoku
+Author: Alexander Ivanov
+Date: 14.01.2016
+Example input.txt:
+    0 0 5 3 0 0 0 0 0
+    8 0 0 0 0 0 0 2 0
+    0 7 0 0 1 0 5 0 0
+    4 0 0 0 0 5 3 0 0
+    0 1 0 0 7 0 0 0 6
+    0 0 3 2 0 0 0 8 0
+    0 6 0 5 0 0 0 0 9
+    0 0 4 0 0 0 0 3 0
+    0 0 0 0 0 9 7 0 0
+N is field size
+K is small square size (K|N)
+Please, don't use DEBUG and USEALLOCATOR
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+#include <time.h>
 #define N 9
 #define K 3
 #define DEBUG 0
@@ -179,10 +198,8 @@ inline int FScanfArray(int** Array, const char* File)
     size_t i, j;
     for(i = 0; i < N; i++)
         for(j = 0; j < N; j++)
-        {
             if(fscanf(Input, "%d", &(Array[i][j])) <= 0)
                 return 0;
-        }
     close(Input);
     return 1;
 }
@@ -316,12 +333,11 @@ int RecursionStep(int** Field, struct MemoryAllocator* Allocator)
 }
 int main(void)
 {
-    /*if(DEBUG)
-        freopen("ERRLOG.txt", "w", stdout);*/
     system("COLOR 0E");
     setlocale(LC_ALL, "rus");
     struct MemoryAllocator* Allocator = CreateMemoryAllocator(10);
     int** Field = CreateArray(Allocator);
+    double WorkTime = 0;
 
     if(!FScanfArray(Field, "input.txt"))
     {
@@ -334,6 +350,7 @@ int main(void)
         printf("Data isn't correct!");
         return 0;
     }
+    WorkTime = clock();
     if(RecursionStep(Field, Allocator))
     {
         printf("Completed\n");
@@ -343,9 +360,10 @@ int main(void)
     {
         printf("No solution\n");
     }
-
+    WorkTime = clock() - WorkTime;
+    printf("WorkTime = %lg", WorkTime / CLOCKS_PER_SEC);
     DestroyArray(Allocator, Field);
     DestroyMemoryAllocator(Allocator);
-    system("pause");
+    system("Pause");
     return 0;
 }

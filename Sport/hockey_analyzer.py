@@ -2,6 +2,7 @@ import re
 import os
 import sys
 
+
 class OneTime:  # Один тайм встречи
     def __init__(self, first, second):
         self.first = first  # Голов первой комманды
@@ -194,8 +195,8 @@ def get_team_info(team):
                      round(tm6/count * 100, 1),
                      round(tm7/count * 100, 1)))
 
-get_team_info('Ванкувер Джайнтс')
-get_team_info('Аризона Койотс')
+get_team_info('Йокерит')
+
 
 
 
