@@ -173,7 +173,7 @@ inline int** CreateArray(struct MemoryAllocator* Allocator)
 }
 inline int** CopyArray(int** From, int** To)
 {
-    size_t i, j;
+    size_t i;
     for(i = 0; i < N; i++)
         memcpy((void*)To[i], (void*)From[i], N * sizeof(int));
 }
@@ -228,41 +228,40 @@ inline void PrintfArray(int** Array)
     }
     printf("\n\n");
 }
-inline struct Cell CalcField(int** Field) /* */
+inline struct Cell CalcField(int** Field)
 {
     size_t i, j;
     size_t ki, kj, iter;
 
-    struct Cell Result, Tmp;
+    struct Cell Result, LeastOptionsCell;
     Result.Var = N + 1;
 
     for(i = 0; i < N; i++)
         for(j = 0; j < N; j++)
             if(Field[i][j] == 0)
             {
-
-                Tmp.i = i;
-                Tmp.j = j;
+                LeastOptionsCell.i = i;
+                LeastOptionsCell.j = j;
                 for(iter = 0; iter < N + 1; iter++)
-                    Tmp.Can[iter] = 1;
-                Tmp.Var = 9;
+                    LeastOptionsCell.Can[iter] = 1;
+                LeastOptionsCell.Var = 9;
 
                 for(kj = 0; kj < N; kj++)
-                    Tmp.Can[Field[i][kj]] = 0;
+                    LeastOptionsCell.Can[Field[i][kj]] = 0;
 
                 for(ki = 0; ki < N; ki++)
-                    Tmp.Can[Field[ki][j]] = 0;
+                    LeastOptionsCell.Can[Field[ki][j]] = 0;
 
                 for(ki = i - (i % K); ki < i + K - (i % K); ki++)
                     for(kj = j - (j % K); kj < j + K - (j % K); kj++)
-                        Tmp.Can[Field[ki][kj]] = 0;
+                        LeastOptionsCell.Can[Field[ki][kj]] = 0;
 
                 for(iter = 1; iter < N + 1; iter++)
-                    if(!Tmp.Can[iter])
-                        Tmp.Var--;
+                    if(!LeastOptionsCell.Can[iter])
+                        LeastOptionsCell.Var--;
 
-                if(Tmp.Var < Result.Var)
-                    Result = Tmp;
+                if(LeastOptionsCell.Var < Result.Var)
+                    Result = LeastOptionsCell;
             }
     return Result;
 }
@@ -271,31 +270,31 @@ inline int FieldIsCorrect(int** Field)
     size_t i, j;
     size_t ki, kj, iter;
 
-    struct Cell Tmp;
+    struct Cell LeastOptionsCell;
     for(i = 0; i < N; i++)
         for(j = 0; j < N; j++)
             if(Field[i][j] != 0)
             {
-                Tmp.i = i;
-                Tmp.j = j;
+                LeastOptionsCell.i = i;
+                LeastOptionsCell.j = j;
                 for(iter = 0; iter < N + 1; iter++)
-                    Tmp.Can[iter] = 1;
-                Tmp.Var = 9;
+                    LeastOptionsCell.Can[iter] = 1;
+                LeastOptionsCell.Var = N + 1;
 
                 for(kj = 0; kj < N; kj++)
                     if(kj != j)
-                        Tmp.Can[Field[i][kj]] = 0;
+                        LeastOptionsCell.Can[Field[i][kj]] = 0;
 
                 for(ki = 0; ki < N; ki++)
                     if(ki != i)
-                        Tmp.Can[Field[ki][j]] = 0;
+                        LeastOptionsCell.Can[Field[ki][j]] = 0;
 
                 for(ki = i - (i % K); ki < i + K - (i % K); ki++)
                     for(kj = j - (j % K); kj < j + K - (j % K); kj++)
                         if(ki != i || kj != j)
-                            Tmp.Can[Field[ki][kj]] = 0;
+                            LeastOptionsCell.Can[Field[ki][kj]] = 0;
 
-                if(Tmp.Can[Field[i][j]] == 0)
+                if(LeastOptionsCell.Can[Field[i][j]] == 0)
                 {
                     if(DEBUG)
                         printf("Data isn't correct in (%d, %d)\n", i + 1, j + 1 );
