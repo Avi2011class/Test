@@ -234,7 +234,7 @@ inline struct Cell CalcField(int** Field) /* */
     size_t ki, kj, iter;
 
     struct Cell Result, Tmp;
-    Result.Var = 10;
+    Result.Var = N + 1;
 
     for(i = 0; i < N; i++)
         for(j = 0; j < N; j++)
