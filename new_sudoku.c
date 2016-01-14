@@ -63,7 +63,7 @@ inline int** GetMemory(struct MemoryAllocator* Allocator)
     if(DEBUG)
     {
         size_t iter;
-        printf("\nGetMemoryStart\n");
+        printf("\nGetMemory start\n");
         printf("Allocator params: \n  Size=%d  SizeStep=%d  FreeCount=%d\n", Allocator->Size, Allocator->SizeStep, Allocator->FreeCount);
         printf("  CanBeUsed & FreeMemory:\n      ");
         for(iter = 0; iter < Allocator->Size; iter++)
@@ -81,7 +81,7 @@ inline int** GetMemory(struct MemoryAllocator* Allocator)
             {
                 Allocator->CanBeUsed[iter] = 0;
                 Allocator->FreeCount--;
-                if(DEBUG) printf("GetMemoryEnd1\n");
+                if(DEBUG) printf("GetMemory end without system memory allocation\n");
                 return Allocator->FreeMemory[iter];
             }
     }
@@ -100,11 +100,11 @@ inline int** GetMemory(struct MemoryAllocator* Allocator)
         }
         Allocator->Size += Allocator->SizeStep;
 
-        if(DEBUG) printf("GetMemoryEnd2\n");
+        if(DEBUG) printf("GetMemory end with system memory allocation\n");
         Allocator->CanBeUsed[Allocator->Size - Allocator->SizeStep] = 0;
         return Allocator->FreeMemory[Allocator->Size - Allocator->SizeStep];
     }
-    if(DEBUG) printf("GetMemoryEnd3\n");
+    if(DEBUG) printf("GetMemory end with segmentation fault\n");
     return NULL;
 }
 inline int FreeMemory(struct MemoryAllocator* Allocator, int** Memory)
@@ -112,7 +112,7 @@ inline int FreeMemory(struct MemoryAllocator* Allocator, int** Memory)
     if(DEBUG)
     {
         size_t iter;
-        printf("\nFreeMemoryStart\n");
+        printf("\nFreeMemory start\n");
         printf("  Memory=x%09lld\n", (long long int)Memory);
         printf("  Allocator params: \n  Size=%d  SizeStep=%d  FreeCount=%d\n", Allocator->Size, Allocator->SizeStep, Allocator->FreeCount);
         printf("    CanBeUsed & FreeMemory:\n      ");
@@ -175,8 +175,7 @@ inline int** CopyArray(int** From, int** To)
 {
     size_t i, j;
     for(i = 0; i < N; i++)
-        for(j = 0; j < N; j++)
-            To[i][j] = From[i][j];
+        memcpy((void*)To[i], (void*)From[i], N * sizeof(int));
 }
 inline void DestroyArray(struct MemoryAllocator* Allocator, int** Array)
 {
@@ -211,9 +210,15 @@ inline void PrintfArray(int** Array)
         for(j = 0; j < N; j++)
         {
             if(Array[i][j] > 0)
-                printf("%d ", Array[i][j]);
+                if(N >= 10)
+                    printf("%2d ", Array[i][j]);
+                else
+                    printf("%d ", Array[i][j]);
             else
-                printf("- ");
+                if(N >= 10)
+                    printf("-- ", Array[i][j]);
+                else
+                    printf("- ", Array[i][j]);
             if(j % K == K - 1)
                 printf("  ");
         }
@@ -221,7 +226,7 @@ inline void PrintfArray(int** Array)
         if(i % K == K - 1)
             printf("\n");
     }
-    printf("/////////////////////\n");
+    printf("\n\n");
 }
 inline struct Cell CalcField(int** Field) /* */
 {
@@ -291,7 +296,12 @@ inline int FieldIsCorrect(int** Field)
                             Tmp.Can[Field[ki][kj]] = 0;
 
                 if(Tmp.Can[Field[i][j]] == 0)
+                {
+                    if(DEBUG)
+                        printf("Data isn't correct in (%d, %d)\n", i + 1, j + 1 );
                     return 0;
+                }
+
             }
     return 1;
 }
@@ -361,7 +371,7 @@ int main(void)
         printf("No solution\n");
     }
     WorkTime = clock() - WorkTime;
-    printf("WorkTime = %lg", WorkTime / CLOCKS_PER_SEC);
+    printf("WorkTime = %lg\n", WorkTime / CLOCKS_PER_SEC);
     DestroyArray(Allocator, Field);
     DestroyMemoryAllocator(Allocator);
     system("Pause");
