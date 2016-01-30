@@ -17,7 +17,8 @@ class StringCoder:
 	def __init__(self, K):
 		self.Key = K
 		self.IntCoder = IntCoder(K)
-	
+# TODO разбивать строки на блоки и шифровать их
+
 # CreateKeys(3, 4, "OpenKey", "ClosedKey")
 ok = Key.ReadFromFile("OpenKey")
 ck = Key.ReadFromFile("ClosedKey")
