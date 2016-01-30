@@ -1,0 +1,17 @@
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\bin\Release\WindowsApplication3.exe.config
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Release\Interop.SKYPE4COMLib.dll
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Release\AxInterop.SKYPE4COMLib.dll
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Release\WindowsApplication3.vbproj.ResolveComReference.cache
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\bin\Release\WindowsApplication3.exe
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\bin\Release\WindowsApplication3.pdb
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\bin\Release\WindowsApplication3.xml
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\bin\Release\Interop.SKYPE4COMLib.dll
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\bin\Release\AxInterop.SKYPE4COMLib.dll
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Release\WindowsApplication3.Form1.resources
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Release\WindowsApplication3.Resources.resources
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Release\WindowsApplication3.vbproj.GenerateResource.Cache
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Release\WindowsApplication3.exe
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Release\WindowsApplication3.xml
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Release\WindowsApplication3.pdb
+C:\Users\USER\Documents\Visual Studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Release\WindowsApplication3.vbprojResolveAssemblyReference.cache
+C:\Users\USER\Documents\Visual Studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Release\WindowsApplication3.Form2.resources

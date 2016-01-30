@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1418554488 source:c:\users\user\documents\Проги\Си\graph\main.cpp
+	<iostream>
+	<fstream>
+	<cstdio>
+	<cmath>
+	<conio.h>
+	<windows.h>
+	<locale.h>
+	<tchar.h>
+	<thread>
+	<chrono>
+
+1418555192 source:f:\graph\main.cpp
+	<iostream>
+	<fstream>
+	<cstdio>
+	<cmath>
+	<conio.h>
+	<windows.h>
+	<locale.h>
+	<tchar.h>
+	<thread>
+	<chrono>
+

@@ -1,0 +1,15 @@
+c:\users\user\documents\visual studio 2012\Projects\Tests\Tests\bin\Debug\Tests.exe.config
+c:\users\user\documents\visual studio 2012\Projects\Tests\Tests\obj\Debug\Tests.Form1.resources
+c:\users\user\documents\visual studio 2012\Projects\Tests\Tests\obj\Debug\Tests.Resources.resources
+c:\users\user\documents\visual studio 2012\Projects\Tests\Tests\obj\Debug\Tests.vbproj.GenerateResource.Cache
+c:\users\user\documents\visual studio 2012\Projects\Tests\Tests\obj\Debug\Interop.SKYPE4COMLib.dll
+c:\users\user\documents\visual studio 2012\Projects\Tests\Tests\obj\Debug\AxInterop.SKYPE4COMLib.dll
+c:\users\user\documents\visual studio 2012\Projects\Tests\Tests\obj\Debug\Tests.vbproj.ResolveComReference.cache
+c:\users\user\documents\visual studio 2012\Projects\Tests\Tests\bin\Debug\Tests.exe
+c:\users\user\documents\visual studio 2012\Projects\Tests\Tests\bin\Debug\Tests.pdb
+c:\users\user\documents\visual studio 2012\Projects\Tests\Tests\bin\Debug\Tests.xml
+c:\users\user\documents\visual studio 2012\Projects\Tests\Tests\bin\Debug\Interop.SKYPE4COMLib.dll
+c:\users\user\documents\visual studio 2012\Projects\Tests\Tests\bin\Debug\AxInterop.SKYPE4COMLib.dll
+c:\users\user\documents\visual studio 2012\Projects\Tests\Tests\obj\Debug\Tests.exe
+c:\users\user\documents\visual studio 2012\Projects\Tests\Tests\obj\Debug\Tests.xml
+c:\users\user\documents\visual studio 2012\Projects\Tests\Tests\obj\Debug\Tests.pdb

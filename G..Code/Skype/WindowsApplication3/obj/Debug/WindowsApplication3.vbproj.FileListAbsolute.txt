@@ -1,0 +1,34 @@
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\bin\Debug\WindowsApplication3.exe.config
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\bin\Debug\WindowsApplication3.exe
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\bin\Debug\WindowsApplication3.pdb
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\bin\Debug\WindowsApplication3.xml
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\WindowsApplication3.Form1.resources
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\WindowsApplication3.Resources.resources
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\WindowsApplication3.vbproj.GenerateResource.Cache
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\WindowsApplication3.exe
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\WindowsApplication3.xml
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\WindowsApplication3.pdb
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\bin\Debug\Interop.SKYPE4COMLib.dll
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\bin\Debug\AxInterop.SKYPE4COMLib.dll
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\Interop.SKYPE4COMLib.dll
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\AxInterop.SKYPE4COMLib.dll
+c:\users\user\documents\visual studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\WindowsApplication3.vbproj.ResolveComReference.cache
+C:\Users\USER\Documents\Visual Studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\WindowsApplication3.Form2.resources
+C:\Users\USER\Documents\Visual Studio 2012\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\WindowsApplication3.vbprojResolveAssemblyReference.cache
+E:\флешка\Projects\WindowsApplication3\WindowsApplication3\bin\Debug\WindowsApplication3.exe.config
+E:\флешка\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\Interop.SKYPE4COMLib.dll
+E:\флешка\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\AxInterop.SKYPE4COMLib.dll
+E:\флешка\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\WindowsApplication3.vbproj.ResolveComReference.cache
+E:\флешка\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\WindowsApplication3.exe
+E:\флешка\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\WindowsApplication3.xml
+E:\флешка\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\WindowsApplication3.pdb
+E:\флешка\Projects\WindowsApplication3\WindowsApplication3\bin\Debug\WindowsApplication3.exe
+E:\флешка\Projects\WindowsApplication3\WindowsApplication3\bin\Debug\WindowsApplication3.pdb
+E:\флешка\Projects\WindowsApplication3\WindowsApplication3\bin\Debug\WindowsApplication3.xml
+E:\флешка\Projects\WindowsApplication3\WindowsApplication3\bin\Debug\Interop.SKYPE4COMLib.dll
+E:\флешка\Projects\WindowsApplication3\WindowsApplication3\bin\Debug\AxInterop.SKYPE4COMLib.dll
+E:\флешка\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\WindowsApplication3.vbprojResolveAssemblyReference.cache
+E:\флешка\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\WindowsApplication3.Form1.resources
+E:\флешка\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\WindowsApplication3.Form2.resources
+E:\флешка\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\WindowsApplication3.Resources.resources
+E:\флешка\Projects\WindowsApplication3\WindowsApplication3\obj\Debug\WindowsApplication3.vbproj.GenerateResource.Cache
