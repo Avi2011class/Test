@@ -23,7 +23,7 @@ class StringCoder:
 			print('KeyLengthError')
 			exit(-1)
 	
-	def CodeString(self, string):
+	def CodeByteString(self, string):
 		IntBlocks = Converter.GetIntBlocks(string, self.BlockSize)
 		CodedIntBlocks = [self.IntCoder.CodeInt(Block) for Block in IntBlocks]
 		CodedString = ' '.join(list(map(str, CodedIntBlocks)))
@@ -32,7 +32,7 @@ class StringCoder:
 	def CodeIntString(self, CodedString):
 		IntBlocks = list(map(int, CodedString.split(' ')))
 		DecodedIntBlocks = [self.IntCoder.CodeInt(Block) for Block in IntBlocks]
-		DecodedString = Converter.GetString(DecodedIntBlocks)
+		DecodedString = Converter.GetByteString(DecodedIntBlocks)
 		return DecodedString
 		
 

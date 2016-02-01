@@ -3,14 +3,14 @@ import math
 class Converter:
 	@staticmethod
 	def GetIntBlocks(string, BlockSize):
-		string = string.encode('utf-8')
+		StartLength = len(string)
 		if len(string) % BlockSize != 0:
 			string += (BlockSize - len(string) % BlockSize) * b'\x00'
 		ByteBlocks = []
 		while string != b'':
 			ByteBlocks.append(string[:BlockSize])
 			string = string[BlockSize:]
-		IntBlocks = [BlockSize]
+		IntBlocks = [BlockSize, StartLength]
 		for CurrentBlock in ByteBlocks:
 			Buffer = 0
 			for j in range(0, BlockSize):
@@ -19,10 +19,10 @@ class Converter:
 		return IntBlocks
 	
 	@staticmethod
-	def GetString(IntBlocks):
-		BlockSize = IntBlocks[0]
-		IntBlocks = IntBlocks[1:]
-		
+	def GetByteString(IntBlocks):
+		BlockSize, StartLength = IntBlocks[0], IntBlocks[1]
+		IntBlocks = IntBlocks[2:]
+
 		StringBlocks = []		
 		for CurrentIntBlock in IntBlocks:
 			Buffer = bytearray()
@@ -32,6 +32,5 @@ class Converter:
 		string = b''
 		for CurrentStrBlock in StringBlocks:
 			string += bytes(CurrentStrBlock)
-		string = string.replace(b'\00', b'')
-		string = string.decode('utf-8')
+		string = string[:StartLength]
 		return string
