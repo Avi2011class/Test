@@ -1,6 +1,6 @@
 import math
 import random
-from primemath import PrimeTest, GCD, GenerateE, LinearDiophantineEquations, GetPrime
+from primemath import PrimeTest, GCD, GenerateE, LinearDiophantineEquations, GetPrime, PowerMod
 
 class Key:
 	def __init__(self, exponent, module):
@@ -26,16 +26,22 @@ def CreateKeys(MinBytes, MaxBytes, OpenKeyFile, ClosedKeyFile):
 	if MinBytes == MaxBytes:
 		print('Хочу адекватный диапазон')
 		exit(-1)
-	P = GetPrime(MinBytes, MaxBytes)
-	Q = GetPrime(MinBytes, MaxBytes)
-	T = GetPrime(MinBytes, MaxBytes)
-	N = P * Q * T
-	Phi = (P - 1) * (Q - 1) * (T - 1)
-	e = GenerateE(Phi)
-	d = LinearDiophantineEquations(e, Phi)[0]
-	OpenKey = Key(e, N)
-	ClosedKey = Key(d, N)
-	OpenKey.WriteToFile(OpenKeyFile)
-	ClosedKey.WriteToFile(ClosedKeyFile)
+	while True:
+		
+		P = GetPrime(MinBytes, MaxBytes)
+		Q = GetPrime(MinBytes, MaxBytes)
+		T = GetPrime(MinBytes, MaxBytes)
+		N = P * Q * T
+		Phi = (P - 1) * (Q - 1) * (T - 1)
+		e = GenerateE(Phi)
+		d = LinearDiophantineEquations(e, Phi)[0]
+		OpenKey = Key(e, N)
+		ClosedKey = Key(d, N)
+		OpenKey.WriteToFile(OpenKeyFile)
+		ClosedKey.WriteToFile(ClosedKeyFile)
+		if PowerMod(255, e * d, N) == 255 and PowerMod(255141, e * d, N) == 255141:
+			return 0
+		else:
+			print('err')
 
 

@@ -35,5 +35,5 @@ class StringCoder:
 		DecodedString = Converter.GetString(DecodedIntBlocks)
 		return DecodedString
 		
-print(Key.ReadFromFile("OpenKey"))
-print(Key.ReadFromFile("ClosedKey"))
+
+
