@@ -1,7 +1,7 @@
 import math
 from keygen import Key, CreateKeys
 from primemath import PowerMod
-
+from converter import Converter
 
 class IntCoder:
 	def __init__(self, K):
@@ -17,10 +17,21 @@ class StringCoder:
 	def __init__(self, K):
 		self.Key = K
 		self.IntCoder = IntCoder(K)
-# TODO разбивать строки на блоки и шифровать их
-
-# CreateKeys(3, 4, "OpenKey", "ClosedKey")
-ok = Key.ReadFromFile("OpenKey")
-ck = Key.ReadFromFile("ClosedKey")
-print(ok, ck)
+		self.BlockSize = int(math.log2(K.module) / 5)
+		if self.BlockSize <= 0:
+			raise KeyLengthError
+	
+	def CodeString(self, string):
+		IntBlocks = Converter.GetIntBlocks(strint, self.BlockSize)
+		
+			
+	
+		
+# CreateKeys(6, 8, "OpenKey", "ClosedKey")
+# ok = Key.ReadFromFile("OpenKey")
+string = 'Вот такая классная строка большой длины'
+byte = Converter.GetIntBlocks(string, 6)
+print(byte)
+restr = Converter.GetString(byte)
+print(restr)
 
