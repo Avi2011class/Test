@@ -21,6 +21,11 @@ class Key:
 		F.close()
 	
 def CreateKeys(MinBytes, MaxBytes, OpenKeyFile, ClosedKeyFile):
+	if MinBytes > MaxBytes:
+		MinBytes, MaxBytes = MaxBytes, MinBytes
+	if MinBytes == MaxBytes:
+		print('Хочу адекватный диапазон')
+		exit(-1)
 	P = GetPrime(MinBytes, MaxBytes)
 	Q = GetPrime(MinBytes, MaxBytes)
 	T = GetPrime(MinBytes, MaxBytes)

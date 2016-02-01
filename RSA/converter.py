@@ -29,7 +29,6 @@ class Converter:
 			for j in range(0, BlockSize):
 				Buffer.append((CurrentIntBlock // (256 ** j)) % 256)
 			StringBlocks.append(Buffer)
-		print(StringBlocks)
 		string = b''
 		for CurrentStrBlock in StringBlocks:
 			string += bytes(CurrentStrBlock)
