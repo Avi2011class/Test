@@ -1,11 +1,8 @@
 import re
-import tkinter
 import sys
 from coder import StringCoder
 from keygen import Key, CreateKeys
 
-tk = tkinter.Tk()
-tk.withdraw()
 # корректные ключи по-умолчанию
 Key1 = Key.ReadFromFile('OpenKey')
 Key2 = Key.ReadFromFile('ClosedKey')
