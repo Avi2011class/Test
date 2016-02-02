@@ -1,11 +1,17 @@
 import re
 import sys
+import os
 from coder import StringCoder
 from keygen import Key, CreateKeys
-
 # корректные ключи по-умолчанию
-Key1 = Key.ReadFromFile('OpenKey')
-Key2 = Key.ReadFromFile('ClosedKey')
+try:
+	Key1 = Key.ReadFromFile('OpenKey')
+except:
+	Key1 = Key(999999999999999, 9999999999999999)
+try:
+	Key2 = Key.ReadFromFile('ClosedKey')
+except:
+	Key2 = Key(999999999999999, 9999999999999999)
 Coder1 = StringCoder(Key1)
 Coder2 = StringCoder(Key2)
 
