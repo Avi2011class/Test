@@ -14,7 +14,7 @@ Example input.txt:
     0 0 0 0 0 9 7 0 0
 N is field size
 K is small square size (K|N)
-Please, don't use DEBUG and USEALLOCATOR
+Please, don't change DEBUG and USEALLOCATOR
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -41,7 +41,7 @@ struct MemoryAllocator
 };
 inline struct MemoryAllocator* CreateMemoryAllocator(int AllocatorStep)
 {
-    size_t i, j, k;
+    size_t i, j;
     struct MemoryAllocator* NewAllocator = (struct MemoryAllocator*)malloc(sizeof(struct MemoryAllocator));
     NewAllocator->Size = AllocatorStep;
     NewAllocator->SizeStep = AllocatorStep;
@@ -300,7 +300,6 @@ inline int FieldIsCorrect(int** Field)
                         printf("Data isn't correct in (%d, %d)\n", i + 1, j + 1 );
                     return 0;
                 }
-
             }
     return 1;
 }
@@ -367,12 +366,15 @@ int main(void)
     }
     else
     {
-        printf("No solution\n");
+       printf("No solution\n");
     }
+
     WorkTime = clock() - WorkTime;
     printf("WorkTime = %lg\n", WorkTime / CLOCKS_PER_SEC);
+
     DestroyArray(Allocator, Field);
     DestroyMemoryAllocator(Allocator);
+
     system("Pause");
     return 0;
 }
