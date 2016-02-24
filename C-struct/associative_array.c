@@ -7,7 +7,7 @@
 ---------------------------------------------------------------------*/
 
 typedef int key_type;
-typedef data_type;
+typedef int data_type;
 /*---------------------------------------------------------------------*/
 void printf_key_type(key_type key)
 {
