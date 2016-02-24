@@ -5,8 +5,18 @@
 /*---------------------------------------------------------------------
 Структура, реализующая ассоциативынй массив на основе хеш-таблиц
 ---------------------------------------------------------------------*/
+
 typedef int key_type;
-typedef int data_type;
+typedef data_type;
+/*---------------------------------------------------------------------*/
+void printf_key_type(key_type key)
+{
+    printf("%d", key);
+}
+void printf_data_type(key_type data)
+{
+    printf("%d", data);
+}
 /*---------------------------------------------------------------------*/
 struct hash_pair
 {
@@ -15,18 +25,20 @@ struct hash_pair
 };
 struct hash_table
 {
-    uint16_t (*hash_function)(key_type key);
+    unsigned int (*hash_function)(key_type key, int max_hash_value);
     int* allocated;
     int* used;
     struct hash_pair** table;
     int allocation_step;
+    int max_hash_value;
 };
 
 /*---------------------------------------------------------------------*/
-uint16_t hash_FAQ6(key_type key); /*Хеш-функция*/
-struct hash_table* hash_table_create(int allocation_step, uint16_t (*hash_function)(key_type key));
+unsigned int hash_FAQ6(key_type key, int max_hash_value); /*Хеш-функция*/
+struct hash_table* hash_table_create(int allocation_step, unsigned int (*hash_function)(key_type key, int max_hash_value), int max_hash_value);
         /*Создание хеш-таблицы. allocation_step - шаг выделения памяти (рекомендовано 5 - 100),
-        hash_function - указатель на используемую функцию хеширования */
+        hash_function - указатель на используемую функцию хеширования
+        max_hash_value - максимальное значение хеш-функции*/
 void hash_table_set(struct hash_table* This, key_type key, data_type data);
         /*установка значения*/
 data_type hash_table_get(struct hash_table* This, key_type key);
@@ -36,9 +48,9 @@ void hash_table_destroy(struct hash_table* This);
 void hash_table_print(struct hash_table* This);
         /*печать целочисленного массива*/
 /*---------------------------------------------------------------------*/
-uint16_t hash_FAQ6(key_type key)
+unsigned int hash_FAQ6(key_type key, int max_hash_value)
 {
-    uint16_t result_hash = 0;
+    unsigned int result_hash = 0;
     char *str = (char*)&key;
     size_t i;
     for(i = 0; i < sizeof(key); i++)
@@ -50,9 +62,9 @@ uint16_t hash_FAQ6(key_type key)
     result_hash += result_hash << 3;
     result_hash ^= result_hash >> 11;
     result_hash += result_hash << 15;
-    return result_hash;
+    return result_hash % max_hash_value;
 }
-struct hash_table* hash_table_create(int allocation_step, uint16_t (*hash_function)(key_type key))
+struct hash_table* hash_table_create(int allocation_step, unsigned int (*hash_function)(key_type key, int max_hash_value), int max_hash_value)
 {
 
     size_t i, j;
@@ -60,21 +72,22 @@ struct hash_table* hash_table_create(int allocation_step, uint16_t (*hash_functi
 
     new_hash_table->allocation_step = allocation_step;
     new_hash_table->hash_function = hash_function;
+    new_hash_table->max_hash_value = max_hash_value;
 
-    new_hash_table->allocated = (int*)calloc(sizeof(int), UINT16_MAX);
-    for(i = 0; i < UINT16_MAX; i++)
+    new_hash_table->allocated = (int*)calloc(sizeof(int), max_hash_value);
+    for(i = 0; i < max_hash_value; i++)
         new_hash_table->allocated[i] = allocation_step;
 
-    new_hash_table->used = (int*)calloc(sizeof(int), UINT16_MAX);
+    new_hash_table->used = (int*)calloc(sizeof(int), max_hash_value);
 
-    new_hash_table->table = (struct hash_pair**)malloc(sizeof(struct hash_pair*) * UINT16_MAX);
-    for(i = 0; i < UINT16_MAX; i++)
+    new_hash_table->table = (struct hash_pair**)malloc(sizeof(struct hash_pair*) * max_hash_value);
+    for(i = 0; i < max_hash_value; i++)
         new_hash_table->table[i] = (struct hash_pair*)calloc(sizeof(struct hash_pair), allocation_step);
     return new_hash_table;
 };
 void hash_table_set(struct hash_table* This, key_type key, data_type data)
 {
-    uint16_t key_hash = (This->hash_function)(key);
+    uint16_t key_hash = (This->hash_function)(key, This->max_hash_value);
     uint8_t founded = 0;
     size_t i;
     for(i = 0; i < This->used[key_hash]; i++)
@@ -102,7 +115,7 @@ void hash_table_set(struct hash_table* This, key_type key, data_type data)
 }
 data_type hash_table_get(struct hash_table* This, key_type key)
 {
-    uint16_t key_hash = (This->hash_function)(key);
+    uint16_t key_hash = (This->hash_function)(key, This->max_hash_value);
     size_t i;
 
     for(i = 0; i < This->used[key_hash]; i++)
@@ -132,7 +145,13 @@ void hash_table_print(struct hash_table* This)
         {
             printf("   %d: ", (int)i);
             for(j = 0; j < This->used[i]; j++)
-                printf("(%d, %d) ", This->table[i][j].key, This->table[i][j].data);
+            {
+                printf("(");
+                printf_key_type(This->table[i][j].key);
+                printf(", ");
+                printf_data_type(This->table[i][j].data);
+                printf(") ");
+            }
             printf("\n");
         }
     printf("\n\n");
@@ -140,36 +159,11 @@ void hash_table_print(struct hash_table* This)
 /*---------------------------------------------------------------------*/
 int main(void)
 {
-    struct hash_table* T = hash_table_create(4, hash_FAQ6);
-    hash_table_print(T);
-    hash_table_set(T, 4, 76);
-    hash_table_set(T, 5, 75);
-    hash_table_set(T, 6, 72);
-    hash_table_print(T);
+    struct hash_table* T = hash_table_create(4, hash_FAQ6, UINT16_MAX);
     hash_table_set(T, 4, 7);
-    hash_table_set(T, 40, 126);
     hash_table_print(T);
+
 
     hash_table_destroy(T);
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
