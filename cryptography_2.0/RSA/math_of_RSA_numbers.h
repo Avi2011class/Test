@@ -165,7 +165,7 @@ namespace math_of_RSA_numbers
               512,
               boost::multiprecision::cpp_int> gen3(base_gen);
 
-        for(size_t i = 0; i < 100000000; i++)
+        for(size_t i = 0; i < 1000000000; i++)
         {
             boost::multiprecision::cpp_int n = gen3() + 50;
             if(GCD(n, phi) == 1)
