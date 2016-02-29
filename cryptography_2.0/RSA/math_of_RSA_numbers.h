@@ -1,6 +1,8 @@
 #include <iostream>
 #include <iomanip>
 #include <ctime>
+#include <cstdlib>
+#include <cmath>
 
 #include <vector>
 #include <iterator>
@@ -11,18 +13,30 @@
 
 #include <boost/multiprecision/cpp_int.hpp>
 #include <boost/multiprecision/miller_rabin.hpp>
+#include <boost/multiprecision/cpp_dec_float.hpp>
 
-#define POWER 128
+#define POWER 2048
 #define KEY_PAIR std::pair<RSAKey2048, RSAKey2048>
+
+enum key_mode {OPEN_KEY, CLOSED_KEY, NULL_KEY, INCORRECT_KEY};
 
 class RSAKey2048
 {
     private:
-        boost::multiprecision::cpp_int exponent;
-        boost::multiprecision::cpp_int module;
+        boost::multiprecision::cpp_int  exponent;
+        boost::multiprecision::cpp_int  module;
+        boost::multiprecision::cpp_int  max_byte_length;
     public:
         RSAKey2048(boost::multiprecision::cpp_int exponent, boost::multiprecision::cpp_int module) :
-            exponent(exponent), module(module) {};
+            exponent(exponent), module(module)
+        {
+            /*
+            boost::multiprecision::cpp_dec_float_100 n(module);
+            boost::multiprecision::cpp_dec_float_100 log256 = boost::multiprecision::log(n) / 5;
+
+            max_byte_length = boost::multiprecision::cpp_int(log256. - 1);
+            */
+        }
         RSAKey2048(std::string file_name)
         {
             try
@@ -32,6 +46,7 @@ class RSAKey2048
                 std::string data;
                 std::getline(input_file, data);
                 input_file >> exponent >> module;
+
             }
             catch(std::exception e)
             {
@@ -39,7 +54,6 @@ class RSAKey2048
                 exit(0);
             }
         }
-
         friend std::ostream& operator << (std::ostream& output, RSAKey2048& Key)
         {
             try
@@ -54,8 +68,30 @@ class RSAKey2048
             }
 
         }
+        boost::multiprecision::cpp_int get_exponent()
+        {
+            return exponent;
+        }
+        boost::multiprecision::cpp_int get_module()
+        {
+            return module;
+        }
 };
+/*
+class encryptor_int
+{
 
+    private:
+        RSAKey2048 & Key;
+        key_mode encryptor_mode;
+    public:
+        encryptor_int(RSAKey2048 & Key, key_mode encryptor_mode) :
+            Key(Key), encryptor_mode(encryptor_mode) {}
+        encryptor_int() :
+
+
+};
+*/
 namespace math_of_RSA_numbers
 {
     /* Наибольший общий делитель двух длинных чисел */
@@ -104,7 +140,7 @@ namespace math_of_RSA_numbers
               boost::multiprecision::cpp_int> gen(base_gen);
         boost::random::mt19937 gen2(clock());
 
-        for(unsigned i = 0; i < 10000000; i++)
+        for(unsigned i = 0; i < 100000000; i++)
         {
             boost::multiprecision::cpp_int n = gen();
             if(miller_rabin_test(n, 25, gen2))
@@ -165,7 +201,7 @@ namespace math_of_RSA_numbers
               512,
               boost::multiprecision::cpp_int> gen3(base_gen);
 
-        for(size_t i = 0; i < 1000000000; i++)
+        for(size_t i = 0; i < 100000000; i++)
         {
             boost::multiprecision::cpp_int n = gen3() + 50;
             if(GCD(n, phi) == 1)
@@ -182,7 +218,6 @@ namespace math_of_RSA_numbers
     }
 
     /* Генерация ключей */
-    //TODO вывод не в файл
     std::pair<RSAKey2048, RSAKey2048> create_keys()
     {
         boost::multiprecision::cpp_int P = math_of_RSA_numbers::generate_random_prime_number();
@@ -193,4 +228,24 @@ namespace math_of_RSA_numbers
 
         return std::make_pair(RSAKey2048(e, N), RSAKey2048(d, N));
     }
+    /* Проверка корректности пары ключей */
+    bool key_pair_OK(KEY_PAIR key_pair)
+    {
+        srand(time(0));
+        for(size_t i = 0; i < 30; i++)
+        {
+            boost::multiprecision::cpp_int
+                N = rand();
+            boost::multiprecision::cpp_int
+                N_coded = power_module(N, key_pair.first.get_exponent(), key_pair.first.get_module());
+            boost::multiprecision::cpp_int
+                N_decoded = power_module(N_coded, key_pair.second.get_exponent(), key_pair.second.get_module());
+            if(N_decoded != N)
+                return false;
+        }
+        if(key_pair.first.get_module() != key_pair.second.get_module())
+            return false;
+        return true;
+    }
+
 }
