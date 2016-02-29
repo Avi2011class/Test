@@ -9,13 +9,30 @@
 #include <string>
 #include <fstream>
 
+#include "coder.h"
 
-#include "math_of_RSA_numbers.h"
+template<typename T>
+void print_container(T container)
+{
+    std::copy(container.begin(), container.end(),
+              std::ostream_iterator<boost::multiprecision::cpp_int>(std::cout, " "));
+    std::cout << std::endl << std::endl;
+}
 
 int main(void)
 {
-    KEY_PAIR p = math_of_RSA_numbers::create_keys();
-    std::cout << p.first << std::endl << p.second << std::endl;
-    std::cout << (math_of_RSA_numbers::key_pair_OK(p) ? "OK" : "ERR") << std::endl;
+    RSAKey2048 open_key("open_key"), closed_key("closed_key");
+    IntCoder coder(open_key), decoder(closed_key);
+
+    std::vector<boost::multiprecision::cpp_int> data, coded_data, decoded_data;
+    for(size_t i = 0; i < 20; i++)
+        data.push_back(i);
+    print_container(data);
+    coded_data = coder.code_vector_int(data);
+    print_container(coded_data);
+    decoded_data = decoder.code_vector_int(coded_data);
+    print_container(decoded_data);
+    //*/
+
     return 0;
 }
