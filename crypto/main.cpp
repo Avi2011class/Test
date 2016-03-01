@@ -24,7 +24,7 @@ int main(void)
     RSAKey2048 open_key("open_key"), closed_key("closed_key");
     IntCoder coder(open_key), decoder(closed_key);
     std::vector<boost::multiprecision::cpp_int> data, coded_data, decoded_data;
-    for(size_t i = 0; i < 20; i++)
+    for(size_t i = 0; i < 2000; i++)
         data.push_back(i);
     print_container(data);
     coded_data = coder.code_vector_int(data);
