@@ -1,3 +1,6 @@
+#ifndef SIMPLE_MATH_H_INCLUDED
+#define SIMPLE_MATH_H_INCLUDED
+
 #include <iostream>
 #include <iomanip>
 #include <ctime>
@@ -15,8 +18,9 @@
 #include <boost/multiprecision/cpp_int.hpp>
 #include <boost/multiprecision/miller_rabin.hpp>
 
-#define POWER 2048
+#define POWER 1024
 
+/* Пространство имен, содержащее основные функции, используемые для генерации ключей */
 namespace simple_math
 {
 /* Наибольший общий делитель двух длинных чисел */
@@ -155,3 +159,6 @@ namespace simple_math
         return result;
     }
 }
+
+
+#endif // SIMPLE_MATH_H_INCLUDED

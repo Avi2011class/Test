@@ -1,0 +1,59 @@
+# depslib dependency file v1.0
+1456865753 source:/home/alexander/cproj/crypto/main.cpp
+	<iostream>
+	<iomanip>
+	<ctime>
+	<vector>
+	<iterator>
+	<algorithm>
+	<set>
+	<string>
+	<fstream>
+	"coder.h"
+
+1456865788 /home/alexander/cproj/crypto/coder.h
+	<iostream>
+	<iomanip>
+	<ctime>
+	<vector>
+	<iterator>
+	<algorithm>
+	<set>
+	<string>
+	<fstream>
+	<boost/multiprecision/cpp_int.hpp>
+	<boost/multiprecision/miller_rabin.hpp>
+	<omp.h>
+	"keys.h"
+
+1456865845 /home/alexander/cproj/crypto/keys.h
+	<iostream>
+	<iomanip>
+	<ctime>
+	<vector>
+	<iterator>
+	<algorithm>
+	<set>
+	<string>
+	<fstream>
+	<boost/multiprecision/cpp_int.hpp>
+	<boost/multiprecision/miller_rabin.hpp>
+	<omp.h>
+	"simple_math.h"
+
+1456865892 /home/alexander/cproj/crypto/simple_math.h
+	<iostream>
+	<iomanip>
+	<ctime>
+	<cstdlib>
+	<cmath>
+	<vector>
+	<iterator>
+	<algorithm>
+	<set>
+	<string>
+	<fstream>
+	<sstream>
+	<boost/multiprecision/cpp_int.hpp>
+	<boost/multiprecision/miller_rabin.hpp>
+

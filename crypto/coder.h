@@ -1,3 +1,5 @@
+#ifndef CODER_H_INCLUDED
+#define CODER_H_INCLUDED
 #include <iostream>
 #include <iomanip>
 #include <ctime>
@@ -11,6 +13,7 @@
 
 #include <boost/multiprecision/cpp_int.hpp>
 #include <boost/multiprecision/miller_rabin.hpp>
+#include <omp.h>
 
 #include "keys.h"
 
@@ -34,11 +37,17 @@ class IntCoder
         std::vector<boost::multiprecision::cpp_int>
         code_vector_int(std::vector<boost::multiprecision::cpp_int> & vector_data)
         {
-            std::vector<boost::multiprecision::cpp_int> coded_ints;
-            for(std::vector<boost::multiprecision::cpp_int>::iterator it = vector_data.begin(); it != vector_data.end(); it++)
-                coded_ints.push_back(code_int(*it));
+            std::vector<boost::multiprecision::cpp_int> coded_ints(vector_data.size());
+
+            #pragma omp parallel for
+            for(size_t i = 0; i < vector_data.size(); i++)
+                coded_ints[i] = code_int(vector_data[i]);
 
             return coded_ints;
         }
 
 };
+
+
+
+#endif // CODER_H_INCLUDED
