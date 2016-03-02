@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1456867105 source:/home/alexander/cproj/crypto/main.cpp
+1456949791 source:/home/alexander/cproj/crypto/main.cpp
 	<iostream>
 	<iomanip>
 	<ctime>
@@ -11,7 +11,7 @@
 	<fstream>
 	"coder.h"
 
-1456865788 /home/alexander/cproj/crypto/coder.h
+1456947896 /home/alexander/cproj/crypto/coder.h
 	<iostream>
 	<iomanip>
 	<ctime>
@@ -25,6 +25,7 @@
 	<boost/multiprecision/miller_rabin.hpp>
 	<omp.h>
 	"keys.h"
+	"converter.h"
 
 1456865977 /home/alexander/cproj/crypto/keys.h
 	<iostream>
@@ -56,4 +57,14 @@
 	<sstream>
 	<boost/multiprecision/cpp_int.hpp>
 	<boost/multiprecision/miller_rabin.hpp>
+
+1456949808 /home/alexander/cproj/crypto/converter.h
+	<vector>
+	<algorithm>
+	<iostream>
+	<cstdio>
+	<boost/multiprecision/cpp_int.hpp>
+	<boost/multiprecision/miller_rabin.hpp>
+	<boost/lexical_cast.hpp>
+	<omp.h>
 

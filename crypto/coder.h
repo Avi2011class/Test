@@ -16,6 +16,7 @@
 #include <omp.h>
 
 #include "keys.h"
+#include "converter.h"
 
 class IntCoder
 {
