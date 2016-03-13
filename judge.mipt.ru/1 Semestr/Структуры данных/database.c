@@ -77,21 +77,6 @@ void ListNoCountRemove(struct ListNoCountNode* Node)
     Node->prev->next = Node->next;
     free(Node);
 }
-void ListNoCountPrint(struct ListNoCountNode* Node)
-{
-    struct ListNoCountNode *cur = Node->next;
-    if(cur != Node)
-    {
-        while(cur != Node)
-        {
-            printf("%d ", cur->value);
-            cur = cur->next;
-        }
-        printf("\n");
-    }
-    else
-        printf("Empty ListNoCount\n");
-}
 void ListNoCountDestroy(struct ListNoCountNode* Node)
 {
     if(Node == NULL)
@@ -191,7 +176,7 @@ int HashMapNoCountDeleteAll(struct HashMapNoCount* HashMapNoCount, DataNoCount d
         Deleted++;
     return Deleted;
 }
-int HashMapNoCountDestroy(struct HashMapNoCount* HashMapNoCount)
+void HashMapNoCountDestroy(struct HashMapNoCount* HashMapNoCount)
 {
     int CurListNoCount;
     for(CurListNoCount = 0; CurListNoCount < HashMapNoCount->MaxHashValue; CurListNoCount++)
@@ -272,21 +257,6 @@ void ListRemove(struct ListNode* Node)
     Node->next->prev = Node->prev;
     Node->prev->next = Node->next;
     free(Node);
-}
-void ListPrint(struct ListNode* Node)
-{
-    struct ListNode *cur = Node->next;
-    if(cur != Node)
-    {
-        while(cur != Node)
-        {
-            printf("%d ", cur->value);
-            cur = cur->next;
-        }
-        printf("\n");
-    }
-    else
-        printf("Empty List\n");
 }
 void ListDestroy(struct ListNode* Node)
 {
@@ -396,7 +366,7 @@ int HashMapDeleteAll(struct HashMap* HashMap, Data dat, int (*cmpData)(const voi
 
     return Deleted;
 }
-int HashMapDestroy(struct HashMap* HashMap)
+void HashMapDestroy(struct HashMap* HashMap)
 {
     int CurList;
     for(CurList = 0; CurList < HashMap->MaxHashValue; CurList++)
@@ -420,8 +390,6 @@ void useCount(char* buffer, int N, int x1, int y1)
             HashMapAdd(B, NewData);
             int count = HashMapCount(A, NewData, cmpData);
             printf("%d\n", count);
-
-
 
     for(i = 1; i < N; i++)
     {
