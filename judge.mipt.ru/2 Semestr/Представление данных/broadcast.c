@@ -23,7 +23,7 @@ void write (FILE* file, union Address a)
 
 int main()
 {
-    union Address address = read (stdin), mask = read_address (stdin), broadcast;
+    union Address address = read (stdin), mask = read (stdin), broadcast;
 
     broadcast.binary = address.binary | ~mask.binary;
 
