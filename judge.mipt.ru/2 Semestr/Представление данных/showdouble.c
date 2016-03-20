@@ -10,6 +10,7 @@ void write_by_half_octet (uint8_t* memory, size_t size)
         for (size_t j = 8; j-- > 4; )
             printf ("%d", (byte & (1 << j)) ? 1 : 0);
         putchar(' ');
+
         for (size_t j = 4; j--; )
             printf ("%d", (byte & (1 << j)) ? 1 : 0);
         putchar(" \n"[!i]);
