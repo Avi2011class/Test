@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-#include <stdint.h>
 #define N 10
 
 int compare_int(const void* __1, const void* __2)
@@ -29,17 +28,16 @@ int compare_point(const void* __1, const void* __2)
 
 void merge_sort(void* Array, size_t size_of_array, size_t size_of_data, int (*compare_function)(const void*, const void*))
 {
-    if(size_of_array == 1)
+    if(size_of_array <= 1)
         return;
     else
     {
-        Array = (uint8_t*)Array;
-        uint8_t* Middle = Array + (size_of_array / 2) * size_of_data;
-        uint8_t* End = Array + size_of_array * size_of_data;
+        void* Middle = Array + (size_of_array / 2) * size_of_data;
+        void* End = Array + size_of_array * size_of_data;
         merge_sort((void*)Array  , size_of_array / 2                 , size_of_data, compare_function);
         merge_sort((void*)Middle , size_of_array - size_of_array / 2 , size_of_data, compare_function);
-        uint8_t *buffer = malloc(size_of_array * size_of_data);
-        uint8_t *first_iterator = Array, *second_iterator = Middle, *inserter = buffer;
+        void *buffer = malloc(size_of_array * size_of_data);
+        void *first_iterator = Array, *second_iterator = Middle, *inserter = buffer;
         while((first_iterator < Middle) && (second_iterator < End))
         {
             if(compare_function(first_iterator, second_iterator) <= 0)
