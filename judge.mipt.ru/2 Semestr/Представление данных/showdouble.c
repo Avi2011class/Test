@@ -16,7 +16,6 @@ void write_by_half_octet (uint8_t* memory, size_t size)
         putchar(" \n"[!i]);
     }
 }
-
 int main()
 {
     char tag[10];
