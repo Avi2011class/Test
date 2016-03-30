@@ -42,10 +42,12 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="coder.h" />
-		<Unit filename="keys.h" />
+		<Unit filename="headers/converter.h" />
+		<Unit filename="headers/encoder.h" />
+		<Unit filename="headers/keys.h" />
+		<Unit filename="headers/scanner.h" />
+		<Unit filename="headers/simple_math.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="simple_math.h" />
 		<Extensions>
 			<envvars />
 			<code_completion />

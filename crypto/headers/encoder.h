@@ -18,16 +18,26 @@
 #include "keys.h"
 #include "converter.h"
 
-class IntCoder
+class Encoder
 {
     private:
-        RSAKey2048 & Key;
+        RSAKey2048 Key;
     public:
-        IntCoder(RSAKey2048 & Key) : Key(Key) {};
+        Encoder(RSAKey2048 Key) : Key(Key) {};
 
-        void connect_with_key(RSAKey2048 & new_key)
+        void connect_to_key(RSAKey2048 new_key)
         {
             Key = new_key;
+        }
+
+        bool is_key_default()
+        {
+            return Key.is_default();
+        }
+
+        int get_key_max_byte_length()
+        {
+            return Key.get_max_byte_length();
         }
 
         boost::multiprecision::cpp_int code_int(boost::multiprecision::cpp_int int_data)
@@ -46,7 +56,6 @@ class IntCoder
 
             return coded_ints;
         }
-
 };
 
 

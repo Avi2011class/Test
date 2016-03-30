@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1456949791 source:/home/alexander/cproj/crypto/main.cpp
+1457962589 source:/home/alexander/cproj/crypto/main.cpp
 	<iostream>
 	<iomanip>
 	<ctime>
@@ -9,9 +9,11 @@
 	<set>
 	<string>
 	<fstream>
-	"coder.h"
+	<string>
+	"headers/encoder.h"
+	"headers/scanner.h"
 
-1456947896 /home/alexander/cproj/crypto/coder.h
+1457030374 /home/alexander/cproj/crypto/coder.h
 	<iostream>
 	<iomanip>
 	<ctime>
@@ -58,7 +60,7 @@
 	<boost/multiprecision/cpp_int.hpp>
 	<boost/multiprecision/miller_rabin.hpp>
 
-1456949808 /home/alexander/cproj/crypto/converter.h
+1457032834 /home/alexander/cproj/crypto/converter.h
 	<vector>
 	<algorithm>
 	<iostream>
@@ -67,4 +69,78 @@
 	<boost/multiprecision/miller_rabin.hpp>
 	<boost/lexical_cast.hpp>
 	<omp.h>
+
+1457033130 /home/alexander/cproj/crypto/scanner.h
+	<iostream>
+	<fstream>
+	<iterator>
+	<algorithm>
+	<vector>
+	<boost/multiprecision/cpp_int.hpp>
+
+1457179589 /home/alexander/cproj/crypto/headers/encoder.h
+	<iostream>
+	<iomanip>
+	<ctime>
+	<vector>
+	<iterator>
+	<algorithm>
+	<set>
+	<string>
+	<fstream>
+	<boost/multiprecision/cpp_int.hpp>
+	<boost/multiprecision/miller_rabin.hpp>
+	<omp.h>
+	"keys.h"
+	"converter.h"
+
+1457180659 /home/alexander/cproj/crypto/headers/keys.h
+	<iostream>
+	<iomanip>
+	<ctime>
+	<vector>
+	<iterator>
+	<algorithm>
+	<set>
+	<string>
+	<fstream>
+	<boost/multiprecision/cpp_int.hpp>
+	<boost/multiprecision/miller_rabin.hpp>
+	<omp.h>
+	"simple_math.h"
+
+1457182408 /home/alexander/cproj/crypto/headers/simple_math.h
+	<iostream>
+	<iomanip>
+	<ctime>
+	<cstdlib>
+	<cmath>
+	<vector>
+	<iterator>
+	<algorithm>
+	<set>
+	<string>
+	<fstream>
+	<sstream>
+	<boost/multiprecision/cpp_int.hpp>
+	<boost/multiprecision/miller_rabin.hpp>
+
+1457038527 /home/alexander/cproj/crypto/headers/converter.h
+	<vector>
+	<algorithm>
+	<iostream>
+	<cstdio>
+	<boost/multiprecision/cpp_int.hpp>
+	<boost/multiprecision/miller_rabin.hpp>
+	<boost/lexical_cast.hpp>
+	<omp.h>
+
+1457962335 /home/alexander/cproj/crypto/headers/scanner.h
+	<iostream>
+	<fstream>
+	<iterator>
+	<algorithm>
+	<vector>
+	<boost/multiprecision/cpp_int.hpp>
+	<boost/lexical_cast.hpp>
 

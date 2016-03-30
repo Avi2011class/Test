@@ -18,7 +18,7 @@
 #include "simple_math.h"
 
 #define KEY_PAIR std::pair<RSAKey2048, RSAKey2048>
-
+#define DEFAULT_KEY RSAKey2048(1814012943, 3264797647)
 /*
 Класс, реализущий ключ RSA 2048 bit
  */
@@ -29,23 +29,25 @@ class RSAKey2048
         boost::multiprecision::cpp_int  module;
         unsigned long long int  max_byte_length;
     public:
-        /* Конструктор, принимающий три числа и строящийключ по ним */
+        /* Дефолтовый двухсторонний ключ */
+        RSAKey2048(): exponent(1814012943), module(3264797647), max_byte_length(simple_math::log256(3264797647)) {};
+        /* Конструктор, принимающий три числа и строящий ключ по ним */
         RSAKey2048(boost::multiprecision::cpp_int exponent, boost::multiprecision::cpp_int module) :
             exponent(exponent), module(module), max_byte_length(simple_math::log256(module)) {}
+        RSAKey2048(boost::multiprecision::cpp_int exponent, boost::multiprecision::cpp_int module, boost::multiprecision::cpp_int max_byte_length) : exponent(exponent), module(module), max_byte_length(max_byte_length) {};
         /* Конструктор, считывающий ключ из файла */
         RSAKey2048(std::string file_name)
         {
             try
             {
-                std::fstream input_file;
-                input_file.open(file_name.c_str());
-                input_file >> exponent >> module;
+                std::fstream input_stream;
+                input_stream.open(file_name.c_str());
+                input_stream >> exponent >> module;
                 max_byte_length = simple_math::log256(module);
             }
             catch(std::exception e)
             {
                 std::cout << "Ошибка открытия файла или считывания ключа\n" << std::endl;
-                exit(0);
             }
         }
         /* Оператор вывода в поток */
@@ -58,10 +60,17 @@ class RSAKey2048
             }
             catch(std::exception e)
             {
-                std::cout << "Ошибка считавания ключа\n" << std::endl;
+                std::cout << "Ошибка считывания ключа\n" << std::endl;
                 exit(0);
             }
-
+        }
+        /* Метод вывода в файл*/
+        void print_to_file(std::string filename)
+        {
+            std::fstream output_stream;
+            output_stream.open(filename.c_str(), std::ios::out);
+            output_stream << exponent << " " << module;
+            output_stream.close();
         }
         /* Методы, позволяющие получить переменные private */
         boost::multiprecision::cpp_int get_exponent()
@@ -76,7 +85,10 @@ class RSAKey2048
         {
             return max_byte_length;
         }
-
+        bool is_default()
+        {
+            return (module == 3264797647) && (exponent == 1814012943);
+        }
 };
 
 /* ПРостранство имен, содержащее основные действия над ключами */
@@ -94,10 +106,6 @@ namespace key_functions
             #pragma omp section
             Q = simple_math::generate_random_prime_number();
         }
-        /*
-        P = simple_math::generate_random_prime_number();
-        Q = simple_math::generate_random_prime_number();
-        */
         boost::multiprecision::cpp_int N = P * Q, Phi = (P - 1) * (Q - 1);
         boost::multiprecision::cpp_int e = simple_math::generate_e(Phi);
         boost::multiprecision::cpp_int d = simple_math::generate_d(e, Phi);
@@ -110,14 +118,14 @@ namespace key_functions
         srand(time(0));
         bool result = true;
         #pragma omp parallel for
-        for(size_t i = 0; i < 30; i++)
+        for(size_t i = 0; i < 20; i++)
         {
             boost::multiprecision::cpp_int
-                N = rand();
+            N = rand();
             boost::multiprecision::cpp_int
-                N_coded = simple_math::power_module(N, key_pair.first.get_exponent(), key_pair.first.get_module());
+            N_coded = simple_math::power_module(N, key_pair.first.get_exponent(), key_pair.first.get_module());
             boost::multiprecision::cpp_int
-                N_decoded = simple_math::power_module(N_coded, key_pair.second.get_exponent(), key_pair.second.get_module());
+            N_decoded = simple_math::power_module(N_coded, key_pair.second.get_exponent(), key_pair.second.get_module());
             if(N_decoded != N)
                 result = false;
         }

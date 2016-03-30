@@ -12,7 +12,7 @@
 
 #include <omp.h>
 
-namespace Converter
+namespace converter
 {
     std::vector<boost::multiprecision::cpp_int>
     char_to_int_vector(std::vector<char> data, int block_size)
@@ -34,7 +34,7 @@ namespace Converter
             boost::multiprecision::cpp_int carry = 1;
             for(int j = 0; j < block_size; j++)
             {
-                buffer += carry * (int)(data[i + j]);
+                buffer += carry * (((int)(data[i + j]) + 256) % 256);
                 carry *= 256;
             }
             result_int_vector[i / block_size + 2] = buffer;
@@ -50,7 +50,7 @@ namespace Converter
         std::vector<char> result_char_vector((data.size() - 2) * block_size);
 
         #pragma omp parallel for
-        for(int i = 2; i < data.size(); i++)
+        for(size_t i = 2; i < data.size(); i++)
         {
             for(int j = 0; j < block_size; j++)
             {

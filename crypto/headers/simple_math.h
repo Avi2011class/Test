@@ -18,13 +18,13 @@
 #include <boost/multiprecision/cpp_int.hpp>
 #include <boost/multiprecision/miller_rabin.hpp>
 
-#define POWER 1024
+#define POWER 2048
 
 /* Пространство имен, содержащее основные функции, используемые для генерации ключей */
 namespace simple_math
 {
 /* Наибольший общий делитель двух длинных чисел */
-    inline boost::multiprecision::cpp_int
+    boost::multiprecision::cpp_int
     GCD(boost::multiprecision::cpp_int __1, boost::multiprecision::cpp_int __2)
     {
         if(__1 == 0 && __2 == 0) return 1;
@@ -41,7 +41,7 @@ namespace simple_math
     }
 
     /* Быстрое возведение в степень по модулю */
-    inline boost::multiprecision::cpp_int
+    boost::multiprecision::cpp_int
     power_module(boost::multiprecision::cpp_int base,
                  boost::multiprecision::cpp_int exponent,
                  boost::multiprecision::cpp_int module)
@@ -62,12 +62,14 @@ namespace simple_math
     }
 
     /* Генерация длинного простого числа */
-    inline boost::multiprecision::cpp_int generate_random_prime_number()
+    boost::multiprecision::cpp_int generate_random_prime_number()
     {
         boost::random::mt11213b base_gen(clock());
+
         boost::random::independent_bits_engine<boost::random::mt11213b,
               POWER,
               boost::multiprecision::cpp_int> gen(base_gen);
+
         boost::random::mt19937 gen2(clock());
 
         for(unsigned i = 0; i < 100000000; i++)
@@ -80,8 +82,8 @@ namespace simple_math
     }
 
     /* Поиск частного решения линейного диофантового уравнение
-    ax + by = GCD(x, y), причем a - наименьшее положиельное */
-    inline std::pair<boost::multiprecision::cpp_int, boost::multiprecision::cpp_int>
+    ax + by = GCD(x, y), причем a - наименьшее положительное */
+    std::pair<boost::multiprecision::cpp_int, boost::multiprecision::cpp_int>
     linear_diophantine_equations(boost::multiprecision::cpp_int x, boost::multiprecision::cpp_int y)
     {
         boost::multiprecision::cpp_int first_a = x, first_b = 1, first_c = 0;
@@ -105,7 +107,7 @@ namespace simple_math
     }
 
     /* Генерация экспоненты открытого ключа */
-    inline boost::multiprecision::cpp_int generate_e(boost::multiprecision::cpp_int phi)
+    boost::multiprecision::cpp_int generate_e(boost::multiprecision::cpp_int phi)
     {
         if(GCD(257, phi) == 1)
             return static_cast<boost::multiprecision::cpp_int>(257);
@@ -139,15 +141,14 @@ namespace simple_math
         }
         return 0;
     }
-
     /* Генерация экспоненты закрытого ключа */
-    inline boost::multiprecision::cpp_int
+    boost::multiprecision::cpp_int
     generate_d(boost::multiprecision::cpp_int e, boost::multiprecision::cpp_int phi)
     {
         return linear_diophantine_equations(e, phi).first;
     }
     /*Извлечение целой части логарифма по модулю 256*/
-    inline unsigned long long int log256(boost::multiprecision::cpp_int __1)
+    unsigned long long int log256(boost::multiprecision::cpp_int __1)
     {
         unsigned long long int result = 0;
         boost::multiprecision::cpp_int buffer = 1;
