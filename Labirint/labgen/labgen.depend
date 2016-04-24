@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1460289260 source:/home/alexander/cproj/labgen/main.cpp
+	<iostream>
+	<fstream>
+	"headers/labirint.h"
+
+1460289774 /home/alexander/cproj/labgen/headers/labirint.h
+	<vector>
+	<ctime>
+	<cstdlib>
+	<algorithm>
+	<map>
+	"DSU.h"
+	"cell.h"
+
+1460277572 /home/alexander/cproj/labgen/headers/DSU.h
+	<vector>
+
+1460284688 /home/alexander/cproj/labgen/headers/cell.h
+
