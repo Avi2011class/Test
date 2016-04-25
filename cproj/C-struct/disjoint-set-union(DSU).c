@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-
+#include <time.h>
+#define N 500000000
 /*
 Система непересекающихся множеств
 В данной статье рассматривается структура данных "система непересекающихся множеств" 
@@ -48,8 +48,8 @@ struct DSU* DSUInit(int Count)
     int i = 0;
     for(i = 0; i < Count; i++)
     {
-        D->Parent[i] = -1;
-        D->Range[i] = 0;
+        D->Parent[i] = i;
+        D->Range[i] = 1;
     }
     D->Length = Count;
     return D;
@@ -78,9 +78,9 @@ void DSUUnionSets(struct DSU* D, int X, int Y)
     {
         if (D->Range[X] < D->Range[Y])
         {
-            int Buf = X;
-            X = Y;
-            Y = Buf;
+            X ^= Y;
+            Y ^= X;
+            X ^= Y;
         }
 		D->Parent[Y] = X;
 		D->Range[X] += D->Range[Y];
@@ -89,5 +89,18 @@ void DSUUnionSets(struct DSU* D, int X, int Y)
 /*---------------------------------------------*/
 int main(void)
 {
+    srand(time(0));
+    double time = clock();
+    struct DSU* D = DSUInit(N);
+    size_t i = 0;
+    for(i = 0; i < N * 4; i++)
+    {
+        if(rand() % 2 == 0)
+            DSUUnionSets(D, rand() % N, rand() % N);
+        else
+            DSUFindSet(D, rand() % N);
+    }
+    time = (clock() - time) / CLOCKS_PER_SEC;
+    printf("Time: %lg\n", time);
     return 0;
 }

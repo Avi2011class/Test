@@ -1,4 +1,3 @@
-/* -lGL -lGLU -lglut */
 #include <stdio.h>
 #include <stdlib.h>
 
