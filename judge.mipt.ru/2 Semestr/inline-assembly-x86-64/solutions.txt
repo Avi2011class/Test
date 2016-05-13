@@ -1,0 +1,111 @@
+Используется компилятор nasm-x86-64 - NASM 64 bit 2.10.07
+zero:
+    mov rax, 0
+
+one:
+    mov rax, 1
+    
+next:
+    inc ax
+    
+prev:
+    dec ax
+    
+sum:
+    mov dx, 0
+    add dx, ax
+    add dx, bx
+
+sub:
+    mov rdx, 0
+    add rdx, rax
+    sub rdx, rbx
+        
+imul:
+    imul bl
+    mov dx, ax
+    
+idiv
+    cwd
+    idiv bx
+    mov dx, ax
+ 
+lea:
+    lea rdx, [rax+rbx*8]
+
+lea1:
+    lea rdx, [rax+rax*4]
+    
+lea32:
+    lea edx, [eax+ebx*8]
+    
+egalite:
+    cmp ax, bx
+    je _yes
+    jne _no
+    _yes:
+        mov dx, 1
+        jmp _finally
+    _no:
+        mov dx, 0
+        jmp _finally
+    _finally:
+        cmp ax, bx
+        
+Factorial:
+    mov rdx, 1
+    _loop:
+        cmp al, 1
+        jna _end
+        movzx rbx, al
+        imul rdx, rbx
+        dec al
+        jmp _loop
+    _end:
+    
+Factorial64:
+    mov rdx, 1
+    factorial_loop:
+        cmp al, 1
+        jna factorial_end
+        movzx rbx, al
+        imul rdx, rbx
+        dec al
+        jmp factorial_loop
+    factorial_end:
+    
+AntiFa:
+    mov rdx, 1
+    mov rbx, 1
+    _loop:
+        cmp rdx, rax
+        je _end
+        inc rbx
+        imul rdx, rbx
+        jmp _loop
+    _end:
+    
+AntiFa64:
+    mov rdx, 1
+    mov rbx, 1
+    _loop:
+        cmp rdx, rax
+        je _end
+        inc rbx
+        imul rdx, rbx
+        jmp _loop
+    _end:
+    
+vector:
+    mov rbx, 0
+    mov rdx, 0
+
+    _loop:
+        cmp rdx, rcx
+        je _end
+        add rbx, [rax+rdx*8]
+        inc rdx
+        jmp _loop
+    _end: 
+
+    

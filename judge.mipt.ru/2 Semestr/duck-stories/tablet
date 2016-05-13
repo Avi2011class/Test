@@ -1,0 +1,26 @@
+#define _BSD_SOURCE // to memmem
+#define _GNU_SOURCE // to memmem
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <assert.h>
+
+char replace_source[] = {0x75, 0x11}; // jne (0x75)
+char replace_new[]    = {0x90, 0x90}; // je  (0x74)
+
+int main(void)
+{
+    struct stat st; // source size
+    stat("source", &st);
+    void* buffer = malloc(st.st_size);
+    FILE* source = fopen("source", "rb");
+    fread(buffer, 1, st.st_size, source);
+    fclose(source);
+    void* data_pointer = memmem(buffer, st.st_size, replace_source, 2);
+    memcpy(data_pointer, replace_new, 2);
+    FILE* cracked = fopen("cracked", "wb");
+    fwrite(buffer, st.st_size, 1, cracked);
+    fclose(cracked);
+    return 0;
+}
