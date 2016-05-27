@@ -1,0 +1,35 @@
+#define _BSD_SOURCE // to memmem
+#define _GNU_SOURCE // to memmem
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <assert.h>
+
+char replace_source[] = {0xd9, 0x45, 0x08, 0xd8, 0xc1};
+char replace_new[]    = {0xd9, 0xeb, 0xde, 0xc9, 0x90};
+
+static const size_t MEMORY_STEP = 1024;
+int main(void)
+{
+    char* buffer= malloc (MEMORY_STEP);
+	size_t buf_size = MEMORY_STEP;
+	size_t offset = 0;
+ 
+	while(1) // read data from stdin
+    {
+		size_t count = fread (buffer + offset, 1, MEMORY_STEP, stdin);
+		offset += count;
+		if (feof (stdin) || count != MEMORY_STEP)
+			break;
+
+		buf_size += MEMORY_STEP;
+		buffer = realloc (buffer, buf_size);
+    }
+        
+    void* data_pointer = memmem(buffer, offset, replace_source, 5);
+    memcpy(data_pointer, replace_new, 5);
+    fwrite(buffer, offset, 1, stdout);
+    free(buffer);
+    return 0;
+}
