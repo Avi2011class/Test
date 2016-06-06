@@ -89,8 +89,10 @@ inline int** GetMemory(struct MemoryAllocator* Allocator)
     {
         size_t iter, j;
         Allocator->FreeCount += Allocator->SizeStep - 1;
-        Allocator->CanBeUsed = (int*)realloc(Allocator->CanBeUsed, sizeof(int) * (Allocator->Size + Allocator->SizeStep));
-        Allocator->FreeMemory = (int***)realloc(Allocator->FreeMemory, sizeof(int**) * (Allocator->Size + Allocator->SizeStep));
+        Allocator->CanBeUsed = (int*)realloc(Allocator->CanBeUsed, 
+	sizeof(int) * (Allocator->Size + Allocator->SizeStep));
+        Allocator->FreeMemory = (int***)realloc(Allocator->FreeMemory, 
+	sizeof(int**) * (Allocator->Size + Allocator->SizeStep));
         for(iter = Allocator->Size; iter < Allocator->Size + Allocator->SizeStep; iter++)
         {
             Allocator->FreeMemory[iter] = (int**)calloc(N, sizeof(int*));
