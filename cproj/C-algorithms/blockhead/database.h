@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
+#include "b-tree.h"
 struct StringDatabase
 {
     struct Node* root;

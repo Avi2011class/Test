@@ -1,18 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "memoryController.h"
-#include "database.h"
+//#include "memoryController.h"
+//#include "database.h"
 #include "computerNext.h"
-#include "b-tree.h"
 
-#define SIZE 20
+#define SIZE 10
 int main (void)
 {
 	srand(time(0));
 	struct StringDatabase* D = databaseInit();
 	FILE* databaseFile = fopen ("base.txt", "r");
+
 	databaseRead(D, databaseFile);
+	//BTreePrintTree(D->root, 0, stdout);
 	fclose (databaseFile);
+
+	//return;
 	// databasePrint(D, stdout);
 	// printf ("%d\n", databaseFindPrefix(D, ""));
 

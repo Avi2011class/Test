@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 //#define __ONLY_RUS
-//#define __ONLY_ENG
+#define __ONLY_ENG
 //#define __ONLY_NUM
 
 #ifdef __ONLY_RUS
