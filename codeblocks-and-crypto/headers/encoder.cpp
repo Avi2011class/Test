@@ -1,60 +1,70 @@
 #include "encoder.h"
 
-boost::multiprecision::cpp_int Encoder::encodeInt(
-    boost::multiprecision::cpp_int intData)
-{
-    return SimpleMath().powerModule(intData, Key.getExponent(),
-                                    Key.getModule());
-}
-std::vector<boost::multiprecision::cpp_int>
-Encoder::encodeVectorInt(std::vector<boost::multiprecision::cpp_int> & vectorData)
-{
-    std::vector<boost::multiprecision::cpp_int> encodedInts(vectorData.size());
+Encryptor::Encryptor(EncryptionKey Key) : Key(Key)
+    {}
 
-    #pragma omp parallel for
-    for(size_t i = 0; i < vectorData.size(); i++)
-        encodedInts[i] = encodeInt(vectorData[i]);
-    return encodedInts;
+boost::multiprecision::cpp_int Encryptor::encryptInt(boost::multiprecision::cpp_int intData)
+{
+    switch (boost::lexical_cast< int >(Key.getParameter("encryptionMode")))
+    {
+    case EncryptionKey::RSA:
+        return SimpleMath::powerModule(intData,
+                                       Key.getParameter("exponent"),
+                                       Key.getParameter("module"));
+        break;
+    }
+    return 0;
 }
-void Encoder::encodeFile(std::string filename)
+
+std::vector< boost::multiprecision::cpp_int >
+    Encryptor::encryptVectorInt(std::vector< boost::multiprecision::cpp_int > & vectorData)
+{
+    int dataSize = (int) vectorData.size();
+    std::vector< boost::multiprecision::cpp_int > encryptedInts(dataSize);
+    #pragma omp parallel for
+    for (int i = 0; i < dataSize; i++)
+        encryptedInts[i] = encryptInt(vectorData[i]);
+    return encryptedInts;
+}
+
+void Encryptor::encryptFile(std::string filename)
 {
     try
     {
-        // std::string hash_of_filename = boost::lexical_cast< std::string >(std::hash< std::string >()(filename)) + ".encoded";
         std::string hashOfFilename = filename + ".encoded";
-        std::vector<char> data = Scanner(filename).readByteData();
-        std::vector<boost::multiprecision::cpp_int> intData =
-            Converter().convert(data, getKeyMaxByteLength());
-        intData = encodeVectorInt(intData);
+        std::vector< char > data = Scanner(filename).readByteData();
+        std::vector< boost::multiprecision::cpp_int > intData =
+                Converter::convert(data, getKeyMaxByteLength());
+        intData = encryptVectorInt(intData);
         Writer(hashOfFilename).writeEncodedData(intData);
     }
     catch (...)
     {
         std::cout << "Error!" << std::endl;
     }
+
 }
-void Encoder::decodeFile(std::string filename)
+
+void Encryptor::decryptFile(std::string filename)
 {
     try
     {
-        // std::string hash_of_filename = boost::lexical_cast< std::string > (std::hash< std::string >(filename)) + ".encoded";
         std::string hashOfFilename = filename + ".encoded";
-        std::vector<boost::multiprecision::cpp_int> intData = Scanner(hashOfFilename).readEncodedData();
-        intData = encodeVectorInt(intData);
-        std::vector<char> data = Converter().convert(intData);
+        std::vector< boost::multiprecision::cpp_int > intData =
+                Scanner(hashOfFilename).readEncodedData();
+
+        intData = encryptVectorInt(intData);
+        std::vector< char > data = Converter::convert(intData);
         Writer(filename).writeByteData(data);
     }
-    catch(...)
+    catch (...)
     {
         std::cout << "Error!" << std::endl;
     }
 }
 
-bool Encoder::isKeyDefault()
+unsigned long long int Encryptor::getKeyMaxByteLength()
 {
-    return Key.isDefault();
+    return boost::lexical_cast< unsigned long long int >(Key.getParameter("maxByteLength"));
 }
-int Encoder::getKeyMaxByteLength()
-{
-    return Key.getMaxByteLength();
-}
+//////////////////////////////////////////////////////////////////////

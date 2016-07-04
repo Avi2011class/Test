@@ -1,3 +1,4 @@
+# This makefile is incorrect!
 CC = g++
 CP = -c -O3 -Wall -Werror -fopenmp -march=corei5
 HEADERS = headers/

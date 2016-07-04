@@ -1,7 +1,7 @@
 #include "converter.h"
 
-std::vector<boost::multiprecision::cpp_int> Converter::convert(
-    std::vector<char>& data, int blockSize)
+static std::vector<boost::multiprecision::cpp_int> Converter::convert(
+    std::vector<char> & data, int blockSize)
 {
     int startDataSize = data.size();
     data.resize(
@@ -27,10 +27,10 @@ std::vector<boost::multiprecision::cpp_int> Converter::convert(
     return resultIntVector;
 }
 
-std::vector<char> Converter::convert(std::vector<boost::multiprecision::cpp_int> & data)
+static std::vector<char> Converter::convert(std::vector<boost::multiprecision::cpp_int> & data)
 {
-    int blockSize = boost::lexical_cast<int>(data[0]);
-    int startResultSize = boost::lexical_cast<int>(data[1]);
+    int blockSize = boost::lexical_cast< int >(data[0]);
+    int startResultSize = boost::lexical_cast< int >(data[1]);
 
     std::vector<char> resultCharVector((data.size() - 2) * blockSize);
 
@@ -40,7 +40,7 @@ std::vector<char> Converter::convert(std::vector<boost::multiprecision::cpp_int>
         for(int j = 0; j < blockSize; j++)
         {
             resultCharVector[ (i - 2) * blockSize + j] =
-                static_cast<char>(boost::lexical_cast<int>(data[i] % 256));
+                static_cast< char >(boost::lexical_cast< int >(data[i] % 256));
             data[i] = data[i] / 256;
         }
     }

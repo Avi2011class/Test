@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1462271418 source:/home/alexander/cproj/codeblocks-and-crypto/headers/converter.cpp
+1467642876 source:/home/alexander/cproj/codeblocks-and-crypto/headers/converter.cpp
 	"converter.h"
 
-1462271418 /home/alexander/cproj/codeblocks-and-crypto/headers/converter.h
+1467642615 /home/alexander/cproj/codeblocks-and-crypto/headers/converter.h
 	<vector>
 	<algorithm>
 	<iostream>
@@ -12,13 +12,14 @@
 	<boost/lexical_cast.hpp>
 	<omp.h>
 
-1462271418 source:/home/alexander/cproj/codeblocks-and-crypto/headers/encoder.cpp
+1467642723 source:/home/alexander/cproj/codeblocks-and-crypto/headers/encoder.cpp
 	"encoder.h"
 
-1462271418 /home/alexander/cproj/codeblocks-and-crypto/headers/encoder.h
+1467641313 /home/alexander/cproj/codeblocks-and-crypto/headers/encoder.h
 	<boost/multiprecision/cpp_int.hpp>
 	<boost/multiprecision/number.hpp>
-	<stddef.h>
+	<boost/lexical_cast.hpp>
+	<cstddef>
 	<iostream>
 	<string>
 	<vector>
@@ -28,22 +29,27 @@
 	"simple_math.h"
 	"writer.h"
 
-1462271418 /home/alexander/cproj/codeblocks-and-crypto/headers/keys.h
+1467642279 /home/alexander/cproj/codeblocks-and-crypto/headers/keys.h
 	<boost/multiprecision/cpp_int.hpp>
 	<boost/multiprecision/detail/et_ops.hpp>
 	<boost/multiprecision/detail/number_base.hpp>
 	<boost/multiprecision/detail/number_compare.hpp>
 	<boost/multiprecision/number.hpp>
-	<stddef.h>
+	<boost/lexical_cast.hpp>
+	<cstddef>
 	<cstdlib>
 	<ctime>
 	<fstream>
 	<iostream>
 	<string>
 	<utility>
+	<functional>
+	<map>
+	<exception>
+	<iomanip>
 	"simple_math.h"
 
-1462271418 /home/alexander/cproj/codeblocks-and-crypto/headers/simple_math.h
+1467624401 /home/alexander/cproj/codeblocks-and-crypto/headers/simple_math.h
 	<boost/multiprecision/cpp_int.hpp>
 	<boost/multiprecision/detail/default_ops.hpp>
 	<boost/multiprecision/detail/et_ops.hpp>
@@ -76,19 +82,19 @@
 	<string>
 	<vector>
 
-1462271418 source:/home/alexander/cproj/codeblocks-and-crypto/headers/keys.cpp
+1467626979 source:/home/alexander/cproj/codeblocks-and-crypto/headers/keys.cpp
 	"keys.h"
 
-1462271418 source:/home/alexander/cproj/codeblocks-and-crypto/headers/scanner.cpp
+1462291434 source:/home/alexander/cproj/codeblocks-and-crypto/headers/scanner.cpp
 	"scanner.h"
 
-1462271418 source:/home/alexander/cproj/codeblocks-and-crypto/headers/simple_math.cpp
+1467624515 source:/home/alexander/cproj/codeblocks-and-crypto/headers/simple_math.cpp
 	"simple_math.h"
 
-1462271418 source:/home/alexander/cproj/codeblocks-and-crypto/headers/writer.cpp
+1462291435 source:/home/alexander/cproj/codeblocks-and-crypto/headers/writer.cpp
 	"writer.h"
 
-1462271418 source:/home/alexander/cproj/codeblocks-and-crypto/main.cpp
+1467642315 source:/home/alexander/cproj/codeblocks-and-crypto/main.cpp
 	<iostream>
 	<functional>
 	"headers/encoder.h"

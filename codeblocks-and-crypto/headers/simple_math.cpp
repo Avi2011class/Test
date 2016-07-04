@@ -1,6 +1,6 @@
 #include "simple_math.h"
 
-boost::multiprecision::cpp_int SimpleMath::GCD(
+static boost::multiprecision::cpp_int SimpleMath::GCD(
     boost::multiprecision::cpp_int first, boost::multiprecision::cpp_int second)
 {
     if (first == 0 && second == 0)
@@ -22,7 +22,7 @@ boost::multiprecision::cpp_int SimpleMath::GCD(
     return first;
 }
 
-boost::multiprecision::cpp_int SimpleMath::powerModule(
+static boost::multiprecision::cpp_int SimpleMath::powerModule(
     boost::multiprecision::cpp_int base,
     boost::multiprecision::cpp_int exponent,
     boost::multiprecision::cpp_int module)
@@ -42,7 +42,7 @@ boost::multiprecision::cpp_int SimpleMath::powerModule(
     return result;
 }
 
-boost::multiprecision::cpp_int SimpleMath::generateE(
+static boost::multiprecision::cpp_int SimpleMath::generateE(
     boost::multiprecision::cpp_int phi)
 {
     if (GCD(257, phi) == 1)
@@ -75,13 +75,13 @@ boost::multiprecision::cpp_int SimpleMath::generateE(
     return 0;
 }
 
-boost::multiprecision::cpp_int SimpleMath::generateD(
+static boost::multiprecision::cpp_int SimpleMath::generateD(
     boost::multiprecision::cpp_int e, boost::multiprecision::cpp_int phi)
 {
     return LinearDiophantine(e, phi).solveGCD().first;
 }
 
-boost::multiprecision::cpp_int SimpleMath::generateRandomPrimeNumber()
+static boost::multiprecision::cpp_int SimpleMath::generateRandomPrimeNumber()
 {
     boost::random::mt11213b baseGen(clock());
 
@@ -98,7 +98,7 @@ boost::multiprecision::cpp_int SimpleMath::generateRandomPrimeNumber()
     return static_cast<boost::multiprecision::cpp_int>(0);
 }
 
-unsigned long long int SimpleMath::log256(boost::multiprecision::cpp_int x)
+static unsigned long long int SimpleMath::log256(boost::multiprecision::cpp_int x)
 {
     unsigned long long int result = 0;
     boost::multiprecision::cpp_int buffer = 1;
@@ -138,7 +138,7 @@ std::pair<boost::multiprecision::cpp_int, boost::multiprecision::cpp_int> Linear
 {
     std::pair<boost::multiprecision::cpp_int, boost::multiprecision::cpp_int> temp =
         solveGCD();
-    boost::multiprecision::cpp_int coefficient = C / SimpleMath().GCD(A, B);
+    boost::multiprecision::cpp_int coefficient = C / SimpleMath::GCD(A, B);
     temp.first *= coefficient;
     temp.second *= coefficient;
     return temp;

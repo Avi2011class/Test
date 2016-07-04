@@ -4,7 +4,9 @@
 #include <boost/multiprecision/cpp_int.hpp>
 
 #include <boost/multiprecision/number.hpp>
-#include <stddef.h>
+#include <boost/lexical_cast.hpp>
+
+#include <cstddef>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -15,18 +17,18 @@
 #include "simple_math.h"
 #include "writer.h"
 
-class Encoder
+class Encryptor
 {
     typedef boost::multiprecision::cpp_int boost_longint;
 private:
-    RSAKey2048 Key;
+    EncryptionKey Key;
 public:
-    Encoder(RSAKey2048 Key) : Key(Key) {};
-    boost_longint encodeInt(boost_longint int_data);
-    std::vector<boost_longint> encodeVectorInt(std::vector<boost_longint> & vectorData);
-    void encodeFile(std::string filename);
-    void decodeFile(std::string filename);
-    bool isKeyDefault();
-    int getKeyMaxByteLength();
+    Encryptor(EncryptionKey Key);
+    boost_longint encryptInt(boost_longint intData);
+    std::vector<boost_longint> encryptVectorInt(std::vector<boost_longint> & vectorData);
+    void encryptFile(std::string filename);
+    void decryptFile(std::string filename);
+    unsigned long long int getKeyMaxByteLength();
 };
+
 #endif // CODER_H_INCLUDED

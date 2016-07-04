@@ -16,8 +16,8 @@ class Converter
     typedef boost::multiprecision::cpp_int boost_longint;
 public:
     Converter() {};
-    std::vector<boost_longint> convert(std::vector<char> & data, int blockSize);
-    std::vector<char>          convert(std::vector<boost_longint> & data);
+    static std::vector< boost_longint > convert(std::vector< char > & data, int blockSize);
+    static std::vector< char >          convert(std::vector< boost_longint > & data);
 };
 
 #endif // CONVERTER_H_INCLUDED

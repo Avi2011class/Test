@@ -6,58 +6,74 @@
 #include <boost/multiprecision/detail/number_base.hpp>
 #include <boost/multiprecision/detail/number_compare.hpp>
 #include <boost/multiprecision/number.hpp>
-#include <stddef.h>
+#include <boost/lexical_cast.hpp>
+
+#include <cstddef>
 #include <cstdlib>
 #include <ctime>
 #include <fstream>
 #include <iostream>
 #include <string>
 #include <utility>
+#include <functional>
+#include <map>
+#include <exception>
+#include <iomanip>
 
 #include "simple_math.h"
 
-#define KEY_PAIR std::pair<RSAKey2048, RSAKey2048>
+#define DEFAULT_RSA_KEY_EXPONENT 1814012943
+#define DEFAULT_RSA_KEY_MODULE 3264797647
+class EncryptionKey
+{
+    typedef boost::multiprecision::cpp_int boost_longint;
+public:
+    enum encryptionMode {RSA, ELGamal};
+    enum keyType {OpenKey, ClosedKey};
+private:
+    std::map< std::string, boost_longint > parameters;
+    // encryptionMode: RSA / ELGamal
+    // keyType: OPenKey / ClosedKey
+    //
+    // RSA: exponent, module
+    // maxByteLength
+    //
+public:
 
-#define DEFAULT_KEY RSAKey2048(1814012943, 3264797647)
-#define DEFAULT_KEY_EXPONENT 1814012943
-#define DEFAULT_KEY_MODULE 3264797647
+    EncryptionKey();
+    EncryptionKey(std::map< std::string, boost_longint> parameters);
+    EncryptionKey(std::string filename);
 
-class RSAKey2048
+    void toFile(std::string filename);
+    boost_longint getParameter(std::string nameOfParameter);
+
+    friend std::ostream & operator << (std::ostream & outputStream, EncryptionKey & key)
+    {
+        for(std::pair< std::string, boost_longint > cur : key.parameters)
+            outputStream << cur.first << " " << cur.second << std::endl;
+        return outputStream;
+    }
+    friend std::istream & operator >> (std::istream & inputStream, EncryptionKey & Key)
+    {
+        Key.parameters.clear();
+        std::string parameter, value;
+        while (inputStream >> parameter >> value)
+            Key.parameters[parameter] = boost_longint(value);
+        return inputStream;
+    }
+};
+///////////////////////////////////////////////////////////////////////////////
+class EncryptionKeyBuilder
 {
     typedef boost::multiprecision::cpp_int boost_longint;
 private:
-    boost_longint  exponent;
-    boost_longint  module;
-    unsigned long long int  maxByteLength;
+    EncryptionKey::encryptionMode mode;
 public:
-    RSAKey2048();
-    RSAKey2048(boost_longint exponent, boost_longint module);
-    RSAKey2048(std::string filename);
-    friend std::ostream& operator << (std::ostream& outputSteam, RSAKey2048& Key)
-    {
-        outputSteam << Key.exponent << " " << Key.module;
-        return outputSteam;
-    }
-    friend std::istream& operator >> (std::istream& inputStream, RSAKey2048& Key)
-    {
-        inputStream >> Key.exponent >> Key.module;
-        return inputStream;
-    }
-    friend bool operator ==( RSAKey2048& Key1, RSAKey2048& Key2 )
-    {
-        return (Key1.exponent == Key2.exponent && Key1.module == Key2.module);
-    }
-    void printToFile(std::string filename);
-    boost_longint getExponent();
-    boost_longint getModule();
-    unsigned long long int getMaxByteLength();
-    bool isDefault();
+    EncryptionKeyBuilder(EncryptionKey::encryptionMode mode);
+    std::pair< EncryptionKey, EncryptionKey > createKeyPair();
+    bool checkKeyPair(std::pair< EncryptionKey, EncryptionKey > keyPair);
 };
 
-class RSAKey2048Bulder
-{
-public:
-    std::pair<RSAKey2048, RSAKey2048> createKeys();
-    bool isKeyPairCorrect(KEY_PAIR keyPair);
-};
+
+
 #endif // KEYS_H_INCLUDED

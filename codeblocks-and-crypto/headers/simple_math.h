@@ -17,17 +17,17 @@
 #include <ctime>
 #include <utility>
 
-#define POWER 2048
+#define POWER 128
 class SimpleMath
 {
     typedef boost::multiprecision::cpp_int boost_longint;
 public:
-    boost_longint GCD(boost_longint A, boost_longint B);
-    boost_longint powerModule(boost_longint base, boost_longint exponent, boost_longint module);
-    boost_longint generateE(boost_longint phi);
-    boost_longint generateD(boost_longint e, boost_longint phi);
-    boost_longint generateRandomPrimeNumber();
-    unsigned long long int log256(boost_longint x);
+    static boost_longint GCD(boost_longint A, boost_longint B);
+    static boost_longint powerModule(boost_longint base, boost_longint exponent, boost_longint module);
+    static boost_longint generateE(boost_longint phi);
+    static boost_longint generateD(boost_longint e, boost_longint phi);
+    static boost_longint generateRandomPrimeNumber();
+    static unsigned long long int log256(boost_longint x);
 };
 class LinearDiophantine
 {
