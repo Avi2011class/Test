@@ -10,7 +10,7 @@ int main()
     int a, b;
     cin >> a >> b;
     Labirint A(a, b);
-    cout << A;
+    out << A;
     out.close();
     return 0;
 }

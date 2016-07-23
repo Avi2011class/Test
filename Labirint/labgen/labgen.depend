@@ -18,3 +18,24 @@
 
 1460284688 /home/alexander/cproj/labgen/headers/cell.h
 
+1461521831 source:/home/alexander/github/Labirint/labgen/main.cpp
+	<iostream>
+	<fstream>
+	"headers/labirint.h"
+
+1461521831 /home/alexander/github/Labirint/labgen/headers/labirint.h
+	<vector>
+	<ctime>
+	<cstdlib>
+	<algorithm>
+	<map>
+	<stack>
+	<queue>
+	"DSU.h"
+	"cell.h"
+
+1461521831 /home/alexander/github/Labirint/labgen/headers/DSU.h
+	<vector>
+
+1461521831 /home/alexander/github/Labirint/labgen/headers/cell.h
+
