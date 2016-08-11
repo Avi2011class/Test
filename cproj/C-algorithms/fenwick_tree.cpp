@@ -44,6 +44,26 @@ public:
     }
 };
 
+template< typename T >
+class PrefixTree
+{
+private:
+    FenwickTree< T > prefix_sums;
+    int size;
+public:
+    PrefixTree(int size) : size(size), prefix_sums(FenwickTree< T >(size)) {}
+    void add(int begin_add, int end_add, T value)
+    {
+        prefix_sums.inc(begin_add, value);
+        if (end_add < size - 1)
+            prefix_sums.inc(end_add + 1, -value);
+    }
+    T operator [] (int index)
+    {
+        return prefix_sums.sum(index);
+    }
+};
+
 using namespace std;
 int main(void)
 {
@@ -52,7 +72,7 @@ int main(void)
         V.push_back(i);
     FenwickTree<int> T(V);
     cout << "Point" << endl;
-    for(size_t i = 0; i < 9; i++)
+    for(size_t i = 0; i < 10; i++)
         cout << T.sum(i, i) << " ";
     cout << endl;
     return 0;
